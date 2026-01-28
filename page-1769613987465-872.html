@@ -1,0 +1,417 @@
+<!-- MODERN -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HugSoap - Custom Hoodies & Streetwear</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap');
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #F8F8F8; /* A very light, almost white gray */
+            color: #2D2D2D; /* Deep charcoal for text */
+            line-height: 1.6;
+        }
+        .text-accent { color: #EC697A; } /* A vibrant, modern coral/pink */
+        .bg-accent { background-color: #EC697A; }
+        .border-accent { border-color: #EC697A; }
+
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F0F0F0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D0D0D0;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #B0B0B0;
+        }
+
+        /* Menu Overlay specific styles */
+        .menu-overlay {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+        }
+        .menu-overlay.open {
+            transform: translateX(0);
+        }
+        .menu-item-hover:hover {
+            transform: translateX(-10px);
+        }
+
+        /* Custom button style */
+        .btn-primary {
+            @apply inline-block px-8 py-3 text-lg font-medium tracking-wide bg-accent text-white rounded-md shadow-lg transition-all duration-300 ease-in-out;
+        }
+        .btn-primary:hover {
+            @apply bg-pink-500 shadow-xl transform scale-105;
+        }
+        .btn-secondary {
+            @apply inline-block px-8 py-3 text-lg font-medium tracking-wide border-2 border-accent text-accent rounded-md transition-all duration-300 ease-in-out;
+        }
+        .btn-secondary:hover {
+            @apply bg-accent text-white shadow-md transform scale-105;
+        }
+
+        /* For the offset blocks effect */
+        .offset-block {
+            position: relative;
+            z-index: 10; /* Default z-index */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* Subtle shadow for depth */
+        }
+        .offset-block-hero {
+            z-index: 20;
+            transform: translate(-10px, 10px); /* Adjust as needed for specific layouts */
+        }
+        .offset-block-1 {
+            transform: translate(15px, -15px);
+            z-index: 15;
+        }
+        .offset-block-2 {
+            transform: translate(-10px, 10px);
+            z-index: 12;
+        }
+        .offset-block-3 {
+            transform: translate(20px, -20px);
+            z-index: 18;
+        }
+        .offset-block-4 {
+            transform: translate(-5px, 5px);
+            z-index: 10;
+        }
+
+        /* Responsive adjustments for offsets */
+        @media (max-width: 768px) {
+            .offset-block-hero, .offset-block-1, .offset-block-2, .offset-block-3, .offset-block-4 {
+                transform: translate(0, 0); /* Remove offsets on smaller screens */
+                margin-top: 20px; /* Add some spacing instead */
+            }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Header & Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 p-6 sm:p-8 flex justify-between items-center bg-transparent backdrop-filter backdrop-blur-md">
+        <div class="relative z-60">
+            <a href="#home" class="text-4xl font-bold tracking-tight text-stone-800 transition-colors hover:text-accent">Hug<span class="text-accent">Soap</span></a>
+        </div>
+        <button id="menu-toggle" class="relative z-60 block md:hidden p-2 focus:outline-none">
+            <span class="sr-only">Open main menu</span>
+            <div class="w-8 h-1 bg-stone-800 rounded mb-1.5 transition-all duration-300 ease-out menu-line-top"></div>
+            <div class="w-8 h-1 bg-stone-800 rounded mb-1.5 transition-all duration-300 ease-out menu-line-middle"></div>
+            <div class="w-8 h-1 bg-stone-800 rounded transition-all duration-300 ease-out menu-line-bottom"></div>
+        </button>
+
+        <nav class="hidden md:flex md:space-x-8 lg:space-x-12 relative z-60">
+            <a href="#home" class="text-xl font-medium text-stone-800 hover:text-accent transition-colors duration-300">Home</a>
+            <a href="#shop" class="text-xl font-medium text-stone-800 hover:text-accent transition-colors duration-300">Shop</a>
+            <a href="#about" class="text-xl font-medium text-stone-800 hover:text-accent transition-colors duration-300">About</a>
+            <a href="#contact" class="text-xl font-medium text-stone-800 hover:text-accent transition-colors duration-300">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="menu-overlay fixed top-0 right-0 w-full h-full bg-stone-50 z-50 flex flex-col justify-center items-center text-center p-8">
+        <button id="close-menu" class="absolute top-8 right-8 text-stone-800 text-4xl focus:outline-none">
+            <i class="fas fa-times"></i>
+        </button>
+        <nav class="flex flex-col space-y-8 text-5xl font-bold">
+            <a href="#home" class="text-stone-800 hover:text-accent transition-transform duration-300 ease-out menu-item-hover" onclick="toggleMenu()">Home</a>
+            <a href="#shop" class="text-stone-800 hover:text-accent transition-transform duration-300 ease-out menu-item-hover" onclick="toggleMenu()">Shop</a>
+            <a href="#about" class="text-stone-800 hover:text-accent transition-transform duration-300 ease-out menu-item-hover" onclick="toggleMenu()">About</a>
+            <a href="#contact" class="text-stone-800 hover:text-accent transition-transform duration-300 ease-out menu-item-hover" onclick="toggleMenu()">Contact</a>
+        </nav>
+        <div class="absolute bottom-16 w-full flex justify-center space-x-6 text-stone-600 text-3xl">
+            <a href="https://instagram.com/hugsoap" target="_blank" aria-label="Instagram"><i class="fab fa-instagram hover:text-accent transition-colors"></i></a>
+            <a href="https://facebook.com/hugsoap" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f hover:text-accent transition-colors"></i></a>
+            <a href="https://x.com/hugsoap" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x-twitter hover:text-accent transition-colors"></i></a>
+            <a href="https://tiktok.com/hugsoap" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok hover:text-accent transition-colors"></i></a>
+            <a href="https://linkedin.com/company/hugsoap" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in hover:text-accent transition-colors"></i></a>
+        </div>
+    </div>
+
+    <!-- PAGE: Home -->
+    <main id="home" class="relative min-h-screen pt-24 sm:pt-32">
+        <section class="container mx-auto px-6 py-12 md:py-24 grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <div class="relative h-96 sm:h-[500px] w-full bg-gray-200 rounded-lg overflow-hidden offset-block-1 md:col-span-1">
+                <img src="https://via.placeholder.com/1200x800/b0e0e6/8a8a8a?text=HugSoap+Model+Hoodie" alt="Model wearing HugSoap custom hoodie" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-50"></div>
+                <div class="absolute bottom-8 left-8 text-white p-4 z-20">
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-2">Comfy, Cool, You.</h2>
+                    <p class="text-lg hidden sm:block">Our latest drops blend comfort with undeniable street style.</p>
+                </div>
+            </div>
+            <div class="md:col-span-1 relative z-20 md:order-first">
+                <div class="relative offset-block-hero bg-stone-50 p-8 sm:p-10 rounded-lg md:max-w-md lg:max-w-lg">
+                    <h1 class="text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-stone-800">
+                        Wear Your <span class="text-accent">Vibe</span>.
+                    </h1>
+                    <p class="text-xl lg:text-2xl text-stone-600 mb-8 max-w-lg">
+                        HugSoap crafts custom hoodies and streetwear that embrace your unique style with comfort and a fresh perspective.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#shop" class="btn-primary">Shop The Collection</a>
+                        <a href="#about" class="btn-secondary">Our Story</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container mx-auto px-6 py-16 md:py-24">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="relative offset-block-2 bg-stone-50 p-8 rounded-lg flex flex-col items-start shadow-lg">
+                    <img src="https://via.placeholder.com/600x400/ffe0b2/8a8a8a?text=Unique+Designs" alt="Hoodie with unique graphic design" class="w-full h-48 object-cover rounded-md mb-6">
+                    <h3 class="text-3xl font-bold mb-4 text-stone-800">Unique Designs</h3>
+                    <p class="text-stone-600 mb-6">Stand out with original graphics and limited edition drops, designed to turn heads.</p>
+                    <a href="#shop" class="text-accent font-semibold flex items-center group">
+                        Explore Designs <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+                <div class="relative offset-block-3 bg-stone-50 p-8 rounded-lg flex flex-col items-start shadow-lg">
+                    <img src="https://via.placeholder.com/600x400/e0ffe0/8a8a8a?text=Premium+Comfort" alt="Soft fabric texture close-up" class="w-full h-48 object-cover rounded-md mb-6">
+                    <h3 class="text-3xl font-bold mb-4 text-stone-800">Premium Comfort</h3>
+                    <p class="text-stone-600 mb-6">Crafted from the softest fabrics for hoodies and streetwear you'll live in.</p>
+                    <a href="#shop" class="text-accent font-semibold flex items-center group">
+                        Feel The Difference <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+                <div class="relative offset-block-4 bg-stone-50 p-8 rounded-lg flex flex-col items-start shadow-lg lg:col-span-1 md:col-span-2">
+                    <img src="https://via.placeholder.com/600x400/c6e2ff/8a8a8a?text=Streetwear+Culture" alt="People chilling in streetwear" class="w-full h-48 object-cover rounded-md mb-6">
+                    <h3 class="text-3xl font-bold mb-4 text-stone-800">Streetwear Culture</h3>
+                    <p class="text-stone-600 mb-6">More than clothes, it's a movement. Be part of the HugSoap community.</p>
+                    <a href="#about" class="text-accent font-semibold flex items-center group">
+                        Join The Fam <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- PAGE: Shop -->
+    <section id="shop" class="min-h-screen py-20 md:py-32 bg-stone-100 relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl lg:text-6xl font-extrabold text-stone-800 mb-16 text-center relative z-20">
+                Our Latest <span class="text-accent">Drops</span>
+            </h2>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-12">
+                <!-- Product Card 1 -->
+                <div class="relative offset-block bg-stone-50 rounded-lg p-6 flex flex-col text-center hover:shadow-xl transition-all duration-300 ease-in-out group">
+                    <img src="https://via.placeholder.com/400x400/fecaca/8a8a8a?text=Echo+Hoodie" alt="HugSoap Echo Hoodie" class="w-full h-64 object-cover rounded-md mb-4 group-hover:scale-105 transition-transform duration-300">
+                    <h3 class="text-2xl font-semibold text-stone-800 mb-2">Echo Hoodie</h3>
+                    <p class="text-stone-600 text-lg mb-4">The classic statement piece. Soft fleece, bold graphic.</p>
+                    <span class="text-2xl font-bold text-accent mb-6">$65.00</span>
+                    <button class="btn-primary w-full opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-300">Add to Cart</button>
+                </div>
+                <!-- Product Card 2 -->
+                <div class="relative offset-block bg-stone-50 rounded-lg p-6 flex flex-col text-center hover:shadow-xl transition-all duration-300 ease-in-out group">
+                    <img src="https://via.placeholder.com/400x400/d7f7de/8a8a8a?text=Vibe+Tee" alt="HugSoap Vibe Tee" class="w-full h-64 object-cover rounded-md mb-4 group-hover:scale-105 transition-transform duration-300">
+                    <h3 class="text-2xl font-semibold text-stone-800 mb-2">Vibe Tee</h3>
+                    <p class="text-stone-600 text-lg mb-4">Lightweight cotton, perfect for layering or summer days.</p>
+                    <span class="text-2xl font-bold text-accent mb-6">$35.00</span>
+                    <button class="btn-primary w-full opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-300">Add to Cart</button>
+                </div>
+                <!-- Product Card 3 -->
+                <div class="relative offset-block bg-stone-50 rounded-lg p-6 flex flex-col text-center hover:shadow-xl transition-all duration-300 ease-in-out group">
+                    <img src="https://via.placeholder.com/400x400/e0b2ff/8a8a8a?text=Gravity+Joggers" alt="HugSoap Gravity Joggers" class="w-full h-64 object-cover rounded-md mb-4 group-hover:scale-105 transition-transform duration-300">
+                    <h3 class="text-2xl font-semibold text-stone-800 mb-2">Gravity Joggers</h3>
+                    <p class="text-stone-600 text-lg mb-4">Ultimate comfort meets sleek streetwear design.</p>
+                    <span class="text-2xl font-bold text-accent mb-6">$50.00</span>
+                    <button class="btn-primary w-full opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-300">Add to Cart</button>
+                </div>
+                <!-- Product Card 4 -->
+                <div class="relative offset-block bg-stone-50 rounded-lg p-6 flex flex-col text-center hover:shadow-xl transition-all duration-300 ease-in-out group">
+                    <img src="https://via.placeholder.com/400x400/b2f0ff/8a8a8a?text=Pixel+Hoodie" alt="HugSoap Pixel Hoodie" class="w-full h-64 object-cover rounded-md mb-4 group-hover:scale-105 transition-transform duration-300">
+                    <h3 class="text-2xl font-semibold text-stone-800 mb-2">Pixel Hoodie</h3>
+                    <p class="text-stone-600 text-lg mb-4">Retro-futuristic vibes with a modern HugSoap twist.</p>
+                    <span class="text-2xl font-bold text-accent mb-6">$70.00</span>
+                    <button class="btn-primary w-full opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-300">Add to Cart</button>
+                </div>
+                <!-- Product Card 5 -->
+                <div class="relative offset-block bg-stone-50 rounded-lg p-6 flex flex-col text-center hover:shadow-xl transition-all duration-300 ease-in-out group">
+                    <img src="https://via.placeholder.com/400x400/ffb2e0/8a8a8a?text=Flow+Longsleeve" alt="HugSoap Flow Longsleeve" class="w-full h-64 object-cover rounded-md mb-4 group-hover:scale-105 transition-transform duration-300">
+                    <h3 class="text-2xl font-semibold text-stone-800 mb-2">Flow Longsleeve</h3>
+                    <p class="text-stone-600 text-lg mb-4">Lightweight and breathable, perfect for any season.</p>
+                    <span class="text-2xl font-bold text-accent mb-6">$40.00</span>
+                    <button class="btn-primary w-full opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-300">Add to Cart</button>
+                </div>
+                <!-- Product Card 6 -->
+                <div class="relative offset-block bg-stone-50 rounded-lg p-6 flex flex-col text-center hover:shadow-xl transition-all duration-300 ease-in-out group">
+                    <img src="https://via.placeholder.com/400x400/b2c6ff/8a8a8a?text=Core+Crewneck" alt="HugSoap Core Crewneck" class="w-full h-64 object-cover rounded-md mb-4 group-hover:scale-105 transition-transform duration-300">
+                    <h3 class="text-2xl font-semibold text-stone-800 mb-2">Core Crewneck</h3>
+                    <p class="text-stone-600 text-lg mb-4">Essential comfort, versatile style. Your new go-to.</p>
+                    <span class="text-2xl font-bold text-accent mb-6">$55.00</span>
+                    <button class="btn-primary w-full opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-300">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="text-center mt-20">
+                <a href="#" class="btn-secondary">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE: About -->
+    <section id="about" class="min-h-screen py-20 md:py-32 relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl lg:text-6xl font-extrabold text-stone-800 mb-16 text-center relative z-20">
+                Our <span class="text-accent">Story</span>
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-start">
+                <div class="relative offset-block bg-stone-50 p-8 lg:p-12 rounded-lg shadow-lg">
+                    <h3 class="text-4xl font-bold text-stone-800 mb-6">Born from a simple idea: comfort meets cool.</h3>
+                    <p class="text-xl text-stone-600 mb-6">
+                        HugSoap started in a small studio with a big vision: to create streetwear that doesn't compromise on comfort or style. We believe your clothes should feel as good as they look, empowering you to express yourself authentically.
+                    </p>
+                    <p class="text-lg text-stone-700">
+                        Our journey is fueled by a passion for unique design and quality craftsmanship. Every hoodie, every tee, every piece of streetwear is thoughtfully designed and meticulously produced to bring you that perfect blend of softness and edge. We're more than a brand; we're a lifestyle.
+                    </p>
+                </div>
+
+                <div class="relative offset-block-2 bg-gray-200 h-96 rounded-lg overflow-hidden shadow-lg md:mt-16 lg:mt-24">
+                    <img src="https://via.placeholder.com/800x600/b0e0d0/8a8a8a?text=HugSoap+Studio+Vibe" alt="Design studio atmosphere with sketches" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-40"></div>
+                </div>
+
+                <div class="relative offset-block-3 md:col-span-2 bg-stone-50 p-8 lg:p-12 rounded-lg shadow-lg mt-12 md:mt-0">
+                    <h3 class="text-4xl font-bold text-stone-800 mb-6">Our Commitment: Quality & Community</h3>
+                    <div class="grid sm:grid-cols-2 gap-8 text-lg">
+                        <div>
+                            <p class="text-stone-600 mb-4">
+                                From the threads we choose to the inks we use, quality is at the core of everything we do. We source premium, durable materials that are built to last, ensuring your HugSoap gear stays fresh wear after wear.
+                            </p>
+                            <p class="text-stone-700 font-medium flex items-center mb-2">
+                                <i class="fas fa-check-circle text-accent mr-3"></i> Ethical Production
+                            </p>
+                            <p class="text-stone-700 font-medium flex items-center">
+                                <i class="fas fa-check-circle text-accent mr-3"></i> Sustainable Practices
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-stone-600 mb-4">
+                                HugSoap is about more than just clothing; it's about building a community. We celebrate individuality, creativity, and the power of self-expression. Join us on our social channels and share your HugSoap style!
+                            </p>
+                            <p class="text-stone-700 font-medium flex items-center mb-2">
+                                <i class="fas fa-users text-accent mr-3"></i> Thriving Community
+                            </p>
+                            <p class="text-stone-700 font-medium flex items-center">
+                                <i class="fas fa-palette text-accent mr-3"></i> Express Your Style
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE: Contact -->
+    <section id="contact" class="min-h-screen py-20 md:py-32 bg-stone-100 relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl lg:text-6xl font-extrabold text-stone-800 mb-16 text-center relative z-20">
+                Get In <span class="text-accent">Touch</span>
+            </h2>
+
+            <div class="max-w-3xl mx-auto grid md:grid-cols-2 gap-12 lg:gap-20">
+                <div class="relative offset-block bg-stone-50 p-8 lg:p-10 rounded-lg shadow-lg flex flex-col items-start md:col-span-1">
+                    <h3 class="text-3xl font-bold text-stone-800 mb-6">General Inquiries</h3>
+                    <p class="text-lg text-stone-600 mb-4">
+                        Have a question about our products, an order, or just want to say hi? We'd love to hear from you!
+                    </p>
+                    <div class="space-y-4 text-xl">
+                        <a href="mailto:hello@hugsoap.com" class="flex items-center text-stone-700 hover:text-accent transition-colors">
+                            <i class="fas fa-envelope mr-4 text-2xl"></i> hello@hugsoap.com
+                        </a>
+                        <a href="tel:+15551234567" class="flex items-center text-stone-700 hover:text-accent transition-colors">
+                            <i class="fas fa-phone-alt mr-4 text-2xl"></i> +1 (555) 123-4567
+                        </a>
+                        <p class="flex items-start text-stone-700">
+                            <i class="fas fa-map-marker-alt mr-4 mt-1 text-2xl"></i> HugSoap HQ <br> 123 Streetwear Ave, <br> Fashion City, ST 90210
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative offset-block-2 bg-gray-200 h-96 rounded-lg overflow-hidden shadow-lg flex items-center justify-center p-6 text-center text-stone-700 md:col-span-1">
+                    <img src="https://via.placeholder.com/800x600/e0f2f7/8a8a8a?text=Connect+With+Us" alt="People connecting and interacting" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-30"></div>
+                    <div class="relative z-10 text-white">
+                        <h3 class="text-3xl font-bold mb-4">Stay Connected</h3>
+                        <p class="text-xl mb-6">Follow us on social media for the latest drops, behind-the-scenes, and community highlights.</p>
+                        <div class="flex justify-center space-x-6 text-4xl mt-6">
+                            <a href="https://instagram.com/hugsoap" target="_blank" aria-label="Instagram"><i class="fab fa-instagram hover:text-accent transition-colors"></i></a>
+                            <a href="https://facebook.com/hugsoap" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f hover:text-accent transition-colors"></i></a>
+                            <a href="https://x.com/hugsoap" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x-twitter hover:text-accent transition-colors"></i></a>
+                            <a href="https://tiktok.com/hugsoap" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok hover:text-accent transition-colors"></i></a>
+                            <a href="https://linkedin.com/company/hugsoap" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in hover:text-accent transition-colors"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative offset-block-4 bg-stone-800 text-stone-300 py-16 px-6 text-center rounded-t-lg shadow-inner z-0">
+        <div class="container mx-auto">
+            <h4 class="text-4xl font-bold mb-6 text-white">Hug<span class="text-accent">Soap</span></h4>
+            <nav class="flex flex-wrap justify-center space-x-6 md:space-x-10 text-lg mb-8">
+                <a href="#home" class="hover:text-accent transition-colors">Home</a>
+                <a href="#shop" class="hover:text-accent transition-colors">Shop</a>
+                <a href="#about" class="hover:text-accent transition-colors">About</a>
+                <a href="#contact" class="hover:text-accent transition-colors">Contact</a>
+            </nav>
+            <div class="flex justify-center space-x-6 text-2xl mb-8">
+                <a href="https://instagram.com/hugsoap" target="_blank" aria-label="Instagram"><i class="fab fa-instagram hover:text-accent transition-colors"></i></a>
+                <a href="https://facebook.com/hugsoap" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f hover:text-accent transition-colors"></i></a>
+                <a href="https://x.com/hugsoap" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x-twitter hover:text-accent transition-colors"></i></a>
+                <a href="https://tiktok.com/hugsoap" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok hover:text-accent transition-colors"></i></a>
+                <a href="https://linkedin.com/company/hugsoap" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in hover:text-accent transition-colors"></i></a>
+            </div>
+            <p class="text-sm">&copy; 2024 HugSoap. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuToggle = document.getElementById('menu-toggle');
+            mobileMenu.classList.toggle('open');
+            document.body.classList.toggle('overflow-hidden'); // Prevent scrolling when menu is open
+
+            // Animate burger icon
+            const lineTop = menuToggle.querySelector('.menu-line-top');
+            const lineMiddle = menuToggle.querySelector('.menu-line-middle');
+            const lineBottom = menuToggle.querySelector('.menu-line-bottom');
+
+            if (mobileMenu.classList.contains('open')) {
+                lineTop.style.transform = 'rotate(-45deg) translate(-7px, 6px)';
+                lineMiddle.style.opacity = '0';
+                lineBottom.style.transform = 'rotate(45deg) translate(-7px, -6px)';
+            } else {
+                lineTop.style.transform = 'none';
+                lineMiddle.style.opacity = '1';
+                lineBottom.style.transform = 'none';
+            }
+        }
+
+        document.getElementById('menu-toggle').addEventListener('click', toggleMenu);
+        document.getElementById('close-menu').addEventListener('click', toggleMenu);
+
+        // Close menu when clicking outside on desktop (if it were ever open) or when resizing
+        window.addEventListener('resize', () => {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (window.innerWidth >= 768 && mobileMenu.classList.contains('open')) {
+                toggleMenu();
+            }
+        });
+    </script>
+</body>
+</html>
