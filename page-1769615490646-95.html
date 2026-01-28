@@ -1,0 +1,452 @@
+<!-- VINTAGE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trailer Land - Your Adventure Awaits</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* Custom styles for vintage feel and stacked offset blocks */
+        body {
+            font-family: 'Georgia', serif; /* Simulating a vintage serif for body */
+            color: #333333; /* Dark Charcoal */
+            background-color: #FDF6EC; /* Creamy Off-White */
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif; /* More distinct serif for headings */
+            color: #4A5F48; /* Deep Forest Green */
+        }
+        .text-accent {
+            color: #D7B377; /* Muted Gold/Ochre */
+        }
+        .bg-primary {
+            background-color: #4A5F48; /* Deep Forest Green */
+        }
+        .bg-secondary {
+            background-color: #D7B377; /* Muted Gold/Ochre */
+        }
+        .bg-tertiary {
+            background-color: #A28859; /* Warm Earth Brown */
+        }
+        .bg-offwhite {
+            background-color: #FDF6EC; /* Creamy Off-White */
+        }
+        .bg-lighttaupe {
+            background-color: #E9E3D6; /* Light Taupe */
+        }
+        .border-brown {
+            border-color: #A28859; /* Warm Earth Brown */
+        }
+
+        /* Stacked Offset Blocks */
+        .block-container {
+            position: relative;
+            margin-bottom: 8rem; /* Space between main blocks */
+        }
+        .offset-block {
+            position: relative;
+            background-color: #FDF6EC; /* Default block background */
+            box-shadow: 15px 15px 0px rgba(162, 136, 89, 0.4); /* Brown shadow for depth */
+            border: 2px solid #A28859; /* Warm Earth Brown border */
+            transform: translate(0, 0); /* Base position */
+            transition: transform 0.3s ease-in-out;
+            z-index: 10;
+        }
+        .offset-block:hover {
+            transform: translate(-5px, -5px); /* Subtle lift on hover */
+        }
+
+        /* Specific offsets for visual distinction */
+        .offset-hero {
+            transform: translate(-30px, -30px);
+            box-shadow: 30px 30px 0px rgba(162, 136, 89, 0.5);
+            z-index: 15;
+        }
+        .offset-section-alt {
+            transform: translate(30px, -15px);
+            box-shadow: -15px 15px 0px rgba(162, 136, 89, 0.4);
+            z-index: 12;
+        }
+        .offset-small {
+            transform: translate(-10px, -10px);
+            box-shadow: 10px 10px 0px rgba(162, 136, 89, 0.3);
+            z-index: 11;
+        }
+        .offset-footer {
+            transform: translate(20px, 20px);
+            box-shadow: -20px -20px 0px rgba(162, 136, 89, 0.5);
+            z-index: 8;
+        }
+
+        /* PDF iframe responsiveness */
+        .pdf-container {
+            position: relative;
+            padding-bottom: 120%; /* Aspect ratio (e.g., A4 portrait: 1.414 or 141.4%) */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #f0f0f0;
+        }
+        .pdf-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Vertical navigation styling */
+        .vertical-nav {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            padding: 1rem 0.5rem;
+            background-color: rgba(74, 95, 72, 0.7); /* Deep Forest Green with transparency */
+            border-radius: 0 8px 8px 0;
+            box-shadow: 2px 0px 5px rgba(0,0,0,0.2);
+        }
+        .vertical-nav a {
+            writing-mode: vertical-lr; /* Vertical text */
+            text-orientation: mixed;
+            transform: rotate(180deg); /* Rotate for readability */
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #FDF6EC; /* Creamy Off-White */
+            padding: 0.5rem 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.2s ease-in-out;
+            position: relative; /* For the accent line */
+        }
+        .vertical-nav a:hover {
+            color: #D7B377; /* Muted Gold on hover */
+            background-color: rgba(162, 136, 89, 0.2);
+        }
+        .vertical-nav a.active {
+            color: #D7B377; /* Muted Gold for active */
+        }
+        .vertical-nav a.active::before {
+            content: '';
+            position: absolute;
+            left: -5px; /* Adjust as needed */
+            top: 50%;
+            transform: translateY(-50%) rotate(90deg); /* Rotate to align with vertical text */
+            width: 2px;
+            height: 80%; /* Vertical line length */
+            background-color: #D7B377; /* Muted Gold line */
+        }
+
+
+        /* Responsive adjustments for vertical navigation and blocks */
+        @media (max-width: 768px) {
+            .vertical-nav {
+                position: relative; /* Make it part of the flow on small screens */
+                width: 100%;
+                top: auto;
+                transform: none;
+                flex-direction: row; /* Horizontal for small screens */
+                justify-content: center;
+                border-radius: 0;
+                padding: 0.75rem 1rem;
+                margin-bottom: 2rem;
+                box-shadow: none;
+            }
+            .vertical-nav a {
+                writing-mode: horizontal-tb;
+                text-orientation: unset;
+                transform: none;
+                padding: 0.5rem 1rem;
+                letter-spacing: normal;
+            }
+            .vertical-nav a.active::before {
+                content: '';
+                position: absolute;
+                bottom: -5px; /* Line below text */
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80%;
+                height: 2px;
+                background-color: #D7B377;
+            }
+            /* Remove block offsets and reduce margins on smaller screens for better readability */
+            .offset-block, .offset-hero, .offset-section-alt, .offset-small, .offset-footer {
+                transform: translate(0, 0) !important;
+                box-shadow: 0px 5px 15px rgba(0,0,0,0.1) !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+            .block-container {
+                margin-bottom: 4rem; /* Reduce space on small screens */
+            }
+        }
+    </style>
+</head>
+<body class="leading-relaxed antialiased">
+
+    <!-- Vertical Navigation (visible on large screens, converts to horizontal on small) -->
+    <nav class="vertical-nav hidden md:flex">
+        <a href="#home" class="active">Home</a>
+        <a href="#vans">Our Fleet</a>
+        <a href="#park">The Park</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <nav class="vertical-nav md:hidden">
+        <a href="#home" class="active">Home</a>
+        <a href="#vans">Our Fleet</a>
+        <a href="#park">The Park</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+        <!-- PAGE: Home -->
+        <section id="home" class="block-container pt-24 md:pt-16">
+            <div class="offset-block offset-hero p-8 md:p-16 relative z-10 bg-offwhite">
+                <div class="md:flex items-center gap-12">
+                    <div class="md:w-1/2 mb-8 md:mb-0">
+                        <img src="https://images.unsplash.com/photo-1510626302-3c287a322c36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80" alt="Vintage Camper Van in Nature" class="w-full h-auto object-cover border-brown border-2 p-2" style="max-height: 450px;">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h1 class="text-6xl md:text-8xl font-bold mb-6 leading-tight text-accent">Trailer <br> Land.</h1>
+                        <p class="text-xl md:text-2xl mb-8 text-gray-700">Your next great adventure begins here. Discover the freedom of the open road and the tranquility of nature with our cozy trailer park spots and unique motorhome rentals.</p>
+                        <a href="#vans" class="inline-block px-8 py-4 bg-secondary text-white font-bold uppercase tracking-wider transition duration-300 hover:bg-tertiary">Explore Our Fleet</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE: Our Vans -->
+        <section id="vans" class="block-container">
+            <div class="offset-block offset-section-alt p-8 md:p-16 bg-lighttaupe relative z-20">
+                <h2 class="text-5xl font-bold mb-12 text-center text-primary">Our Fleet of Wanderlust</h2>
+                <p class="text-center max-w-3xl mx-auto mb-16 text-gray-700">Each of our six vans and motorhomes is a carefully curated home-on-wheels, ready to take you on unforgettable journeys. Designed for comfort, style, and adventure, pick your perfect companion!</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                    <!-- Van 1 -->
+                    <div class="offset-block offset-small bg-offwhite p-6 border-brown border-2">
+                        <img src="https://images.unsplash.com/photo-1616462708302-536f9a613271?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1280&q=80" alt="The Explorer Van" class="w-full h-48 object-cover mb-6 border-brown border">
+                        <h3 class="text-3xl font-bold mb-4 text-primary">The Explorer</h3>
+                        <p class="text-gray-700 mb-4">A rugged yet refined custom-built camper van, perfect for intrepid couples. Features a compact kitchen, solar power, and a cozy sleeping area.</p>
+                        <ul class="text-gray-600 text-sm italic">
+                            <li>Sleeps: 2</li>
+                            <li>Gear: Mini-kitchen, Awning</li>
+                        </ul>
+                    </div>
+                    <!-- Van 2 -->
+                    <div class="offset-block offset-small bg-offwhite p-6 border-brown border-2">
+                        <img src="https://images.unsplash.com/photo-1596701831889-7097e3c9cf1c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1280&q=80" alt="The Family Cruiser" class="w-full h-48 object-cover mb-6 border-brown border">
+                        <h3 class="text-3xl font-bold mb-4 text-primary">The Family Cruiser</h3>
+                        <p class="text-gray-700 mb-4">Our spacious motorhome, ideal for families or small groups. Equipped with multiple beds, a dining area, and a full bathroom.</p>
+                        <ul class="text-gray-600 text-sm italic">
+                            <li>Sleeps: 4-5</li>
+                            <li>Gear: Full bath, Entertainment</li>
+                        </ul>
+                    </div>
+                    <!-- Van 3 -->
+                    <div class="offset-block offset-small bg-offwhite p-6 border-brown border-2">
+                        <img src="https://images.unsplash.com/photo-1593345472288-75c0291f0347?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1280&q=80" alt="The Solo Roamer" class="w-full h-48 object-cover mb-6 border-brown border">
+                        <h3 class="text-3xl font-bold mb-4 text-primary">The Solo Roamer</h3>
+                        <p class="text-gray-700 mb-4">Compact and agile, this van is perfect for solo adventurers or minimalist duos looking to explore off the beaten path.</p>
+                        <ul class="text-gray-600 text-sm italic">
+                            <li>Sleeps: 1-2</li>
+                            <li>Gear: Portable stove, Bike rack</li>
+                        </ul>
+                    </div>
+                    <!-- Van 4 -->
+                    <div class="offset-block offset-small bg-offwhite p-6 border-brown border-2">
+                        <img src="https://images.unsplash.com/photo-1546747192-f705500d8924?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1280&q=80" alt="The Scenic View" class="w-full h-48 object-cover mb-6 border-brown border">
+                        <h3 class="text-3xl font-bold mb-4 text-primary">The Scenic View</h3>
+                        <p class="text-gray-700 mb-4">A larger motorhome with panoramic windows, designed to bring the beauty of nature right to your living space. Comfort is key!</p>
+                        <ul class="text-gray-600 text-sm italic">
+                            <li>Sleeps: 3-4</li>
+                            <li>Gear: Panoramic windows, Spacious interior</li>
+                        </ul>
+                    </div>
+                    <!-- Van 5 -->
+                    <div class="offset-block offset-small bg-offwhite p-6 border-brown border-2">
+                        <img src="https://images.unsplash.com/photo-1617551528652-e5470d0554ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1280&q=80" alt="The Retreat" class="w-full h-48 object-cover mb-6 border-brown border">
+                        <h3 class="text-3xl font-bold mb-4 text-primary">The Retreat</h3>
+                        <p class="text-gray-700 mb-4">Our premium van conversion, offering luxurious amenities like a fixed queen bed, hot water shower, and advanced climate control.</p>
+                        <ul class="text-gray-600 text-sm italic">
+                            <li>Sleeps: 2</li>
+                            <li>Gear: Queen bed, Hot shower</li>
+                        </ul>
+                    </div>
+                    <!-- Van 6 -->
+                    <div class="offset-block offset-small bg-offwhite p-6 border-brown border-2">
+                        <img src="https://images.unsplash.com/photo-1582266858223-2895f36e8648?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1280&q=80" alt="The Adventure Wagon" class="w-full h-48 object-cover mb-6 border-brown border">
+                        <h3 class="text-3xl font-bold mb-4 text-primary">The Adventure Wagon</h3>
+                        <p class="text-gray-700 mb-4">A versatile motorhome with ample storage for all your adventure gear, perfect for outdoor enthusiasts and explorers.</p>
+                        <ul class="text-gray-600 text-sm italic">
+                            <li>Sleeps: 3</li>
+                            <li>Gear: Large storage, Off-grid ready</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE: The Park & Map -->
+        <section id="park" class="block-container">
+            <div class="offset-block p-8 md:p-16 bg-offwhite relative z-10">
+                <h2 class="text-5xl font-bold mb-12 text-center text-primary">Welcome to Trailer Land Park</h2>
+                <div class="md:flex gap-12 items-start">
+                    <div class="md:w-1/2 mb-8 md:mb-0">
+                        <p class="text-lg text-gray-700 mb-6">Our tranquil trailer park offers spacious, shaded pitches for your own RV or trailer. Nestled amidst rolling hills and lush greenery, it’s the perfect base for exploring the local region or simply unwinding by the campfire.</p>
+                        <p class="text-lg text-gray-700 mb-6">We provide essential amenities including clean ablution blocks, fresh water hook-ups, electricity points, and a communal braai area. Experience the peace and quiet, connect with nature, and make lasting memories.</p>
+                        <h3 class="text-3xl font-bold mb-4 text-primary">Your Guide to Trailer Land</h3>
+                        <p class="text-gray-700 mb-6">Explore our park layout with the detailed map below. Find your perfect spot, locate amenities, and plan your stay with ease.</p>
+                        <div class="bg-lighttaupe p-6 border-brown border-2 flex items-center justify-between flex-wrap gap-4">
+                            <span class="font-bold text-lg text-primary">Download the Map:</span>
+                            <a href="https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-sample.pdf" target="_blank" class="inline-flex items-center px-6 py-3 bg-tertiary text-white font-bold uppercase tracking-wider transition duration-300 hover:bg-primary">
+                                <i class="fas fa-file-pdf mr-3"></i> Get PDF
+                            </a>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <div class="pdf-container border-brown border-2">
+                            <iframe src="https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-sample.pdf" title="Trailer Land Park Map" loading="lazy"></iframe>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-4 text-center">Interactive map of Trailer Land. Please note: for best experience, download the PDF or view fullscreen on larger devices.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE: About Us -->
+        <section id="about" class="block-container">
+            <div class="offset-block offset-section-alt p-8 md:p-16 bg-lighttaupe relative z-20">
+                <h2 class="text-5xl font-bold mb-12 text-center text-primary">Meet Hardus, The Heart of Trailer Land</h2>
+                <div class="md:flex gap-12 items-center">
+                    <div class="md:w-1/3 mb-8 md:mb-0">
+                        <!-- Placeholder for Hardus van der Berg's image, simulating a professional portrait -->
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Hardus van der Berg" class="w-full h-auto object-cover border-brown border-2 p-2 rounded-lg grayscale hover:grayscale-0 transition duration-300">
+                        <p class="text-center text-gray-600 mt-4 italic">Hardus van der Berg, Founder</p>
+                    </div>
+                    <div class="md:w-2/3">
+                        <p class="text-lg text-gray-700 mb-6">Hello, I'm Hardus van der Berg, and Trailer Land is more than just a business to me—it's a lifelong passion project born from countless road trips and a deep love for the outdoors. After years of exploring hidden gems and camping under starlit skies, I decided to create a place where others could experience the same freedom and joy.</p>
+                        <p class="text-lg text-gray-700 mb-6">My vision for Trailer Land was simple: to offer a welcoming retreat for travelers, whether they bring their own home on wheels or choose one of our meticulously maintained motorhomes. Every detail, from the peaceful park setting to the comfort of our vans, is designed to ensure you have an exceptional and memorable journey.</p>
+                        <p class="text-lg text-gray-700">I believe in the power of travel to connect us with nature and with each other. Come and experience the warmth and adventure of Trailer Land. I look forward to welcoming you!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE: Contact -->
+        <section id="contact" class="block-container mb-0">
+            <div class="offset-block p-8 md:p-16 bg-offwhite relative z-10">
+                <h2 class="text-5xl font-bold mb-12 text-center text-primary">Get in Touch with Trailer Land</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                    <div>
+                        <h3 class="text-3xl font-bold mb-4 text-primary">Ready for Your Adventure?</h3>
+                        <p class="text-lg text-gray-700 mb-6">We're here to help you plan your perfect escape. Whether you have questions about our park spots, want to inquire about motorhome availability, or simply need travel advice, feel free to reach out.</p>
+                        <div class="mb-4">
+                            <p class="text-lg text-primary font-bold">Call Us:</p>
+                            <a href="tel:+27123456789" class="text-gray-700 text-xl hover:text-accent transition duration-200">+27 12 345 6789</a>
+                        </div>
+                        <div class="mb-4">
+                            <p class="text-lg text-primary font-bold">Email Us:</p>
+                            <a href="mailto:info@trailerland.com" class="text-gray-700 text-xl hover:text-accent transition duration-200">info@trailerland.com</a>
+                        </div>
+                        <div class="mb-4">
+                            <p class="text-lg text-primary font-bold">Find Us:</p>
+                            <p class="text-gray-700 text-xl">
+                                123 Adventure Road, <br>
+                                Nature's Valley, 6401, <br>
+                                South Africa
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold mb-4 text-primary">Our Location</h3>
+                        <div class="w-full h-64 bg-gray-200 border-brown border-2 flex items-center justify-center text-gray-500 italic overflow-hidden">
+                            <!-- Placeholder for an actual map embed, e.g., Google Maps -->
+                            <img src="https://www.mapquestapi.com/staticmap/v5/map?key=YOUR_MAPQUEST_KEY&center=Nature's+Valley,South+Africa&size=600,400&zoom=10&locations=Nature's+Valley,South+Africa|marker-red-lg" alt="Map of Trailer Land location" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-sm text-gray-600 mt-4">Pictured: General area of Trailer Land. Exact coordinates available on request.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="block-container mt-12 mb-0">
+        <div class="offset-block offset-footer bg-primary text-offwhite p-8 md:p-12 text-center relative z-0">
+            <h3 class="text-4xl font-bold mb-6 text-accent">Trailer Land</h3>
+            <p class="max-w-xl mx-auto mb-8 text-lg">Embrace the journey. Discover freedom. Create memories.</p>
+
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="#" class="text-offwhite hover:text-secondary transition duration-300"><i class="fab fa-instagram fa-2x"></i></a>
+                <a href="#" class="text-offwhite hover:text-secondary transition duration-300"><i class="fab fa-facebook-f fa-2x"></i></a>
+                <a href="#" class="text-offwhite hover:text-secondary transition duration-300"><i class="fab fa-x-twitter fa-2x"></i></a>
+                <a href="#" class="text-offwhite hover:text-secondary transition duration-300"><i class="fab fa-tiktok fa-2x"></i></a>
+                <a href="#" class="text-offwhite hover:text-secondary transition duration-300"><i class="fab fa-linkedin-in fa-2x"></i></a>
+            </div>
+
+            <p class="text-sm text-gray-300">&copy; <span id="current-year"></span> Trailer Land. All rights reserved. Managed by Hardus van der Berg.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Update copyright year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('.vertical-nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelectorAll('.vertical-nav a').forEach(link => link.classList.remove('active'));
+                this.classList.add('active');
+
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 50, // Offset for fixed nav/spacing
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Highlight active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.vertical-nav a');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + entry.target.id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, {
+            rootMargin: '-30% 0px -60% 0px' // Adjust active section based on its visibility
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+    </script>
+</body>
+</html>
