@@ -1,0 +1,213 @@
+<!-- EXPERIMENTAL -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hanging Cradles – Your Late Night Kinetic Oasis</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&family=Permanent+Marker&display=swap');
+
+        body {
+            font-family: 'Chakra Petch', sans-serif;
+            background-color: #0A001A; /* Deep Space Background */
+            color: #E0E0E0;
+            overflow-x: hidden; /* Prevent horizontal scroll from offsets */
+        }
+
+        h1, h2, h3 {
+            font-family: 'Permanent Marker', cursive;
+            color: #00F0FF; /* Electric Teal */
+        }
+
+        .text-neon-pink { color: #FF00A0; }
+        .bg-deep-purple { background-color: #2F004F; }
+        .bg-electric-teal { background-color: #00F0FF; }
+        .bg-vibrant-fuchsia { background-color: #FF00A0; }
+
+        .shadow-neon-teal {
+            box-shadow: 0 0px 30px rgba(0, 240, 255, 0.6), 0 0px 60px rgba(0, 240, 255, 0.3);
+        }
+        .shadow-neon-pink {
+            box-shadow: 0 0px 30px rgba(255, 0, 160, 0.6), 0 0px 60px rgba(255, 0, 160, 0.3);
+        }
+
+        .rotated-block {
+            transform: rotate(-3deg);
+            margin-left: -20px;
+            margin-top: 30px;
+        }
+
+        .rotated-block-alt {
+            transform: rotate(2deg);
+            margin-right: -20px;
+            margin-bottom: 30px;
+        }
+
+        .offset-x-lg {
+            left: 5%;
+        }
+        .offset-x-sm {
+            left: -2%;
+        }
+
+        @media (min-width: 768px) {
+            .md\:rotated-block {
+                transform: rotate(-3deg);
+                margin-left: -50px;
+                margin-top: 50px;
+            }
+            .md\:rotated-block-alt {
+                transform: rotate(2deg);
+                margin-right: -50px;
+                margin-bottom: 50px;
+            }
+            .md\:offset-x-lg {
+                left: 10%;
+            }
+            .md\:offset-x-sm {
+                left: -5%;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen relative">
+
+    <!-- PAGE: Home -->
+    <main class="relative z-10 p-4 md:p-8 overflow-hidden">
+
+        <!-- Header - Minimal, off-center -->
+        <header class="relative mb-16 md:mb-24 z-20">
+            <h1 class="text-4xl md:text-6xl text-neon-pink absolute top-4 left-4 md:top-8 md:left-8 transform rotate-[-5deg] tracking-wide">
+                Hanging Cradles
+            </h1>
+            <nav class="absolute top-8 right-4 md:top-12 md:right-8 flex space-x-6 text-xl md:text-2xl z-30">
+                <a href="#products" class="text-electric-teal hover:text-white transition duration-300">Kinetic</a>
+                <a href="#vibe" class="text-electric-teal hover:text-white transition duration-300">Our Vibe</a>
+            </nav>
+        </header>
+
+        <!-- Hero Section - Overlapping, layered text -->
+        <section class="relative pt-32 md:pt-48 pb-20 md:pb-32 px-4 md:px-16 mb-20 md:mb-32">
+            <div class="relative max-w-5xl mx-auto z-10">
+                <p class="text-xl md:text-3xl text-vibrant-fuchsia uppercase mb-4 md:mb-8 font-bold tracking-wider relative -left-8 md:-left-16 transform rotate-[-2deg]">
+                    Unwind. Discover. Play.
+                </p>
+                <h2 class="text-5xl md:text-8xl lg:text-9xl text-electric-teal leading-tight relative z-20 ml-0 md:ml-10">
+                    Your <span class="text-white relative z-10 -left-6 md:-left-12">Late Night</span> Oasis <br>of Kinetic Joy.
+                </h2>
+                <p class="text-lg md:text-2xl text-gray-300 max-w-2xl mt-8 md:mt-12 ml-auto relative right-0 md:right-10 transform rotate-[1deg]">
+                    When the world winds down, we gear up. Dive into a universe of mesmerizing motion and satisfying tactile sensations.
+                </p>
+                <a href="#products" class="inline-block mt-12 md:mt-20 px-8 py-4 text-2xl md:text-3xl bg-vibrant-fuchsia text-white font-bold uppercase tracking-widest relative z-30
+                                        hover:bg-electric-teal transform -rotate-[3deg] hover:rotate-[0deg] transition duration-300 ease-in-out
+                                        shadow-lg hover:shadow-neon-pink">
+                    Explore Our Playgrounds
+                </a>
+            </div>
+        </section>
+
+        <!-- PAGE: Products -->
+        <section id="products" class="relative py-20 md:py-32 px-4 md:px-8 mb-20 md:mb-32">
+            <h3 class="text-4xl md:text-6xl text-center text-neon-pink mb-16 md:mb-24 transform rotate-[2deg]">
+                Our Kinetic Collections
+            </h3>
+
+            <!-- Product Block 1: Newton Cradles -->
+            <div class="relative w-11/12 md:w-3/4 lg:w-2/3 mx-auto mb-24 md:mb-32 bg-deep-purple p-8 md:p-12
+                        rounded-xl shadow-lg shadow-neon-teal md:rotated-block z-20">
+                <h4 class="text-3xl md:text-5xl text-electric-teal mb-6 md:mb-8 transform rotate-[-2deg]">
+                    The Rhythm Keepers: Newton Cradles
+                </h4>
+                <p class="text-lg md:text-xl text-gray-200 mb-6 md:mb-8">
+                    Discover the elegant dance of physics. Our Newton cradles are more than just desk toys; they're moments of serene focus, a continuous loop of mesmerizing energy. Perfect for thinkers, dreamers, and anyone needing a kinetic break.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-md border-2 border-electric-teal relative md:offset-x-sm">
+                        <h5 class="text-xl md:text-2xl text-white mb-2 font-bold">Zenith Cradle</h5>
+                        <p class="text-gray-400">Our classic, precision-engineered for endless sway.</p>
+                        <div class="h-24 bg-gradient-to-br from-gray-700 to-gray-900 rounded mt-4 flex items-center justify-center text-5xl text-electric-teal"><i class="fas fa-meteor"></i></div>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-md border-2 border-electric-teal relative md:offset-x-lg">
+                        <h5 class="text-xl md:text-2xl text-white mb-2 font-bold">Orbital Echo</h5>
+                        <p class="text-gray-400">A multi-ball masterpiece with hypnotic rhythm.</p>
+                        <div class="h-24 bg-gradient-to-br from-gray-700 to-gray-900 rounded mt-4 flex items-center justify-center text-5xl text-electric-teal"><i class="fas fa-infinity"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Block 2: Fidget Toys -->
+            <div class="relative w-11/12 md:w-3/4 lg:w-2/3 mx-auto bg-vibrant-fuchsia p-8 md:p-12
+                        rounded-xl shadow-lg shadow-neon-pink md:rotated-block-alt z-10 md:-mt-24">
+                <h4 class="text-3xl md:text-5xl text-white mb-6 md:mb-8 transform rotate-[3deg]">
+                    Tactile Delights: Fidget Toys
+                </h4>
+                <p class="text-lg md:text-xl text-gray-800 mb-6 md:mb-8">
+                    Pop, spin, glide, and click your way to focus. Our curated collection of fidget toys offers endless satisfying sensations for restless hands and minds. From discreet desk companions to vibrant, engaging wonders.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                    <div class="bg-gray-100 p-6 rounded-lg shadow-md border-2 border-vibrant-fuchsia relative md:offset-x-lg">
+                        <h5 class="text-xl md:text-2xl text-gray-900 mb-2 font-bold">Kinetic Cube</h5>
+                        <p class="text-gray-600">Transforming geometric puzzle for endless clicks.</p>
+                        <div class="h-24 bg-gradient-to-br from-pink-200 to-pink-400 rounded mt-4 flex items-center justify-center text-5xl text-vibrant-fuchsia"><i class="fas fa-cube"></i></div>
+                    </div>
+                    <div class="bg-gray-100 p-6 rounded-lg shadow-md border-2 border-vibrant-fuchsia relative md:offset-x-sm">
+                        <h5 class="text-xl md:text-2xl text-gray-900 mb-2 font-bold">Aura Spinner</h5>
+                        <p class="text-gray-600">Smooth, silent spin for ultimate stress relief.</p>
+                        <div class="h-24 bg-gradient-to-br from-pink-200 to-pink-400 rounded mt-4 flex items-center justify-center text-5xl text-vibrant-fuchsia"><i class="fas fa-fan"></i></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE: Our Vibe -->
+        <section id="vibe" class="relative py-20 md:py-32 px-4 md:px-16 mb-20 md:mb-32">
+            <div class="relative max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
+                <div class="relative bg-electric-teal p-8 md:p-12 rounded-xl shadow-lg shadow-neon-teal z-20
+                            transform -rotate-[4deg] md:-rotate-[7deg] md:translate-x-[-10%] md:translate-y-[-5%]">
+                    <h3 class="text-4xl md:text-6xl text-deep-purple mb-6 md:mb-8 leading-tight">
+                        More Than Just Play
+                    </h3>
+                    <p class="text-lg md:text-xl text-gray-900 font-semibold leading-relaxed">
+                        At Hanging Cradles, we believe in the power of pause. In the quiet hum of a perfectly balanced cradle, or the satisfying click of a fidget, there's a unique magic. We're here for the night owls, the problem solvers, and anyone who finds peace in motion.
+                    </p>
+                </div>
+                <div class="relative bg-vibrant-fuchsia p-8 md:p-12 rounded-xl shadow-lg shadow-neon-pink z-10
+                            transform rotate-[2deg] md:rotate-[3deg] md:translate-x-[10%] md:translate-y-[10%]">
+                    <h3 class="text-4xl md:text-6xl text-white mb-6 md:mb-8 leading-tight">
+                        Your Late Night Escape
+                    </h3>
+                    <p class="text-lg md:text-xl text-gray-900 font-semibold leading-relaxed">
+                        As a late-night business, we get it. The best ideas often strike when the world is asleep. Our doors (and our online realm) are open for you to explore, discover, and find that perfect kinetic companion to spark creativity or soothe the mind.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer - Location and Socials, with an experimental tilt -->
+    <footer class="relative bg-deep-purple text-gray-300 py-16 md:py-20 px-8 md:px-16 mt-20 md:mt-32 transform rotate-[-2deg] origin-bottom-left z-0">
+        <div class="relative max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between text-center md:text-left transform rotate-[2deg] py-4">
+            <div class="mb-8 md:mb-0">
+                <h3 class="text-3xl md:text-4xl text-neon-pink font-bold mb-4">Hanging Cradles</h3>
+                <p class="text-lg md:text-xl">Hunchback Avenue 24</p>
+                <p class="text-lg md:text-xl">Open Late, Always Fun.</p>
+            </div>
+            <div class="flex space-x-6 md:space-x-8 text-3xl md:text-4xl text-electric-teal">
+                <a href="#" class="hover:text-white transition duration-300"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-white transition duration-300"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="hover:text-white transition duration-300"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" class="hover:text-white transition duration-300"><i class="fab fa-tiktok"></i></a>
+                <a href="#" class="hover:text-white transition duration-300"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <div class="text-center text-gray-500 text-sm mt-8 md:mt-12 transform rotate-[2deg] z-0">
+            &copy; 2023 Hanging Cradles. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
