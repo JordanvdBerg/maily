@@ -1,0 +1,294 @@
+<!-- MODERN -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ねむい - A Taste of Rural Japan</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Zen+Old+Mincho:wght@400;700&display=swap');
+
+        :root {
+            --color-primary-red: #B03C3B; /* Deep, earthy vermillion */
+            --color-off-white: #FBF8F0;   /* Creamy off-white */
+            --color-earthy-brown: #4A3C39; /* Warm dark brown for text */
+            --color-bamboo-green: #8C9C7B; /* Muted sage green */
+            --color-light-brown: #E8DED3;  /* Soft light taupe */
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--color-earthy-brown);
+            background-color: var(--color-light-brown);
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Zen Old Mincho', serif; /* For a touch of traditional elegance */
+            color: var(--color-earthy-brown);
+        }
+
+        .bg-primary-red { background-color: var(--color-primary-red); }
+        .text-primary-red { color: var(--color-primary-red); }
+        .border-primary-red { border-color: var(--color-primary-red); }
+
+        .bg-off-white { background-color: var(--color-off-white); }
+        .text-off-white { color: var(--color-off-white); }
+
+        .bg-earthy-brown { background-color: var(--color-earthy-brown); }
+        .text-earthy-brown { color: var(--color-earthy-brown); }
+
+        .bg-bamboo-green { background-color: var(--color-bamboo-green); }
+        .text-bamboo-green { color: var(--color-bamboo-green); }
+
+        .bg-light-brown { background-color: var(--color-light-brown); }
+        .text-light-brown { color: var(--color-light-brown); }
+
+        /* Custom Bento Grid Layout */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            grid-auto-rows: minmax(200px, auto); /* Flexible row height */
+        }
+
+        .bento-item {
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            position: relative;
+            transform: translateY(20px);
+            opacity: 0;
+        }
+
+        /* Specific item sizing for larger screens */
+        @media (min-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: repeat(5, 1fr); /* 5 columns for more intricate layouts */
+                grid-template-rows: repeat(4, minmax(180px, auto));
+                padding: 4rem;
+                gap: 2.5rem;
+            }
+
+            .bento-item.hero {
+                grid-column: 1 / span 3;
+                grid-row: 1 / span 2;
+                min-height: 500px;
+            }
+            .bento-item.story {
+                grid-column: 4 / span 2;
+                grid-row: 1 / span 1;
+            }
+            .bento-item.takoyaki {
+                grid-column: 1 / span 2;
+                grid-row: 3 / span 1;
+            }
+            .bento-item.boba {
+                grid-column: 3 / span 1;
+                grid-row: 3 / span 1;
+            }
+            .bento-item.referral {
+                grid-column: 4 / span 2;
+                grid-row: 2 / span 2;
+                min-height: 400px;
+            }
+            .bento-item.menu {
+                grid-column: 1 / span 1;
+                grid-row: 4 / span 1;
+            }
+            .bento-item.hours {
+                grid-column: 2 / span 2;
+                grid-row: 4 / span 1;
+            }
+            .bento-item.message {
+                grid-column: 4 / span 2;
+                grid-row: 4 / span 1;
+            }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+    <!-- GSAP & ScrollTrigger CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Header - Minimal & Persistent -->
+    <header class="fixed top-0 left-0 w-full z-50 p-6 flex justify-between items-center bg-off-white bg-opacity-90 backdrop-filter backdrop-blur-sm shadow-sm">
+        <div class="text-3xl font-bold text-earthy-brown">ねむい</div>
+        <nav class="hidden md:flex space-x-8 text-lg">
+            <a href="#home" class="hover:text-primary-red transition duration-300">Home</a>
+            <a href="#story" class="hover:text-primary-red transition duration-300">Our Story</a>
+            <a href="#menu" class="hover:text-primary-red transition duration-300">Menu</a>
+            <a href="#referral" class="hover:text-primary-red transition duration-300">Referral</a>
+            <a href="#visit" class="hover:text-primary-red transition duration-300">Visit Us</a>
+        </nav>
+        <button id="mobile-menu-button" class="md:hidden text-earthy-brown text-2xl focus:outline-none">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-off-white z-50 flex flex-col items-center justify-center space-y-8 text-3xl transform -translate-x-full transition-transform duration-300 ease-in-out">
+        <button id="close-menu-button" class="absolute top-6 right-6 text-earthy-brown text-4xl focus:outline-none">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="#home" class="text-earthy-brown hover:text-primary-red" onclick="document.getElementById('mobile-menu-overlay').classList.add('-translate-x-full')">Home</a>
+        <a href="#story" class="text-earthy-brown hover:text-primary-red" onclick="document.getElementById('mobile-menu-overlay').classList.add('-translate-x-full')">Our Story</a>
+        <a href="#menu" class="text-earthy-brown hover:text-primary-red" onclick="document.getElementById('mobile-menu-overlay').classList.add('-translate-x-full')">Menu</a>
+        <a href="#referral" class="text-earthy-brown hover:text-primary-red" onclick="document.getElementById('mobile-menu-overlay').classList.add('-translate-x-full')">Referral</a>
+        <a href="#visit" class="text-earthy-brown hover:text-primary-red" onclick="document.getElementById('mobile-menu-overlay').classList.add('-translate-x-full')">Visit Us</a>
+    </div>
+
+    <!-- PAGE: Home -->
+    <main id="home" class="pt-24 min-h-screen">
+        <section class="bento-grid">
+            <!-- Hero Section -->
+            <div class="bento-item hero bg-cover bg-center flex items-end p-8 text-off-white" 
+                 style="background-image: url('https://images.unsplash.com/photo-1620601331899-79883bb85f81?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80');">
+                <div>
+                    <h1 class="text-5xl lg:text-7xl font-bold mb-4 leading-tight drop-shadow-lg">
+                        ねむい <br class="lg:hidden"> A Taste of <br> Rural Japan
+                    </h1>
+                    <p class="text-xl lg:text-2xl drop-shadow-md">Handcrafted Takoyaki & Boba Tea in the heart of the countryside.</p>
+                </div>
+            </div>
+
+            <!-- Our Story -->
+            <div id="story" class="bento-item story bg-off-white p-8 flex flex-col justify-center">
+                <h2 class="text-3xl font-bold mb-4 text-primary-red">Our Story</h2>
+                <p class="text-lg">Born from the tranquil rhythm of rural Japan, ねむい (Nemui) brings authentic flavors and warm hospitality. Every takoyaki is a bite of tradition, every boba tea a refreshing escape.</p>
+            </div>
+
+            <!-- Takoyaki Highlight -->
+            <div class="bento-item takoyaki bg-bamboo-green p-6 flex flex-col justify-between text-off-white">
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">Signature Takoyaki</h3>
+                    <p>Crispy on the outside, creamy on the inside, with succulent octopus. Try our classic or unique seasonal toppings!</p>
+                </div>
+                <img src="https://images.unsplash.com/photo-1601735515328-868727145719?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Classic Takoyaki" class="mt-4 rounded-md object-cover h-32 w-full">
+            </div>
+
+            <!-- Boba Tea Highlight -->
+            <div class="bento-item boba bg-off-white p-6 flex flex-col justify-between text-earthy-brown">
+                <div>
+                    <h3 class="text-2xl font-bold mb-2 text-primary-red">Refreshing Boba</h3>
+                    <p>From classic milk teas to vibrant fruit blends, our boba teas are the perfect complement to your takoyaki.</p>
+                </div>
+                <img src="https://images.unsplash.com/photo-1626210217984-d621b199990e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Boba Tea" class="mt-4 rounded-md object-cover h-32 w-full">
+            </div>
+
+            <!-- Referral Program -->
+            <div id="referral" class="bento-item referral bg-primary-red p-8 flex flex-col justify-center items-center text-off-white text-center">
+                <h2 class="text-4xl font-bold mb-4 leading-tight">Share the Warmth, Get Rewarded!</h2>
+                <p class="text-lg mb-6">Love ねむい? Introduce us to your friends and both of you will enjoy a special treat on your next visit!</p>
+                <button class="bg-off-white text-primary-red font-bold py-3 px-6 rounded-full hover:bg-light-brown transition duration-300 transform hover:scale-105">
+                    Get Your Referral Link!
+                </button>
+                <p class="text-sm mt-4 opacity-80">Terms and conditions apply.</p>
+            </div>
+
+            <!-- Menu Snippet -->
+            <div id="menu" class="bento-item menu bg-light-brown p-6 flex flex-col justify-center items-center text-earthy-brown">
+                <h3 class="text-2xl font-bold mb-3 text-primary-red">Our Full Menu</h3>
+                <p class="mb-4 text-center">Explore all our delicious takoyaki varieties and refreshing boba tea creations.</p>
+                <a href="#" class="bg-earthy-brown text-off-white font-semibold py-2 px-5 rounded-full hover:bg-primary-red transition duration-300">View Menu</a>
+            </div>
+
+            <!-- Hours & Location -->
+            <div id="visit" class="bento-item hours bg-earthy-brown p-6 text-off-white">
+                <h3 class="text-2xl font-bold mb-3">Visit Us</h3>
+                <p class="mb-2"><strong>Location:</strong> Rural countryside, Japan</p>
+                <p class="mb-4">Near Fuji-san, follow the bamboo groves.</p>
+                <p class="mb-2"><strong>Hours:</strong></p>
+                <ul class="list-disc list-inside">
+                    <li>Tuesday - Sunday: 11:00 AM - 7:00 PM</li>
+                    <li>Monday: Closed</li>
+                </ul>
+            </div>
+
+            <!-- Miyazaki's Message -->
+            <div class="bento-item message bg-off-white p-6 text-earthy-brown flex flex-col justify-center items-start border-l-4 border-bamboo-green">
+                <p class="text-lg italic mb-4">"We put our heart into every dish, hoping to share the simple joys of rural Japan with you."</p>
+                <p class="font-semibold">- Miyazaki, Owner of ねむい</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-earthy-brown text-off-white py-12 px-8 text-center">
+        <div class="container mx-auto">
+            <h3 class="text-3xl font-bold mb-4">ねむい</h3>
+            <p class="mb-6">&copy; 2023 ねむい. All rights reserved. Crafted with care in rural Japan.</p>
+            <div class="flex justify-center space-x-6 text-2xl mb-8">
+                <a href="#" class="text-off-white hover:text-primary-red transition duration-300"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-off-white hover:text-primary-red transition duration-300"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-off-white hover:text-primary-red transition duration-300"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" class="text-off-white hover:text-primary-red transition duration-300"><i class="fab fa-tiktok"></i></a>
+                <a href="#" class="text-off-white hover:text-primary-red transition duration-300"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <p class="text-sm">Bringing the warmth of handmade takoyaki and refreshing boba tea to your community.</p>
+        </div>
+    </footer>
+
+    <script>
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Initial load animation for header
+        gsap.from("header", {
+            y: -100,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out"
+        });
+
+        // Animate bento grid items on scroll
+        gsap.utils.toArray(".bento-item").forEach((item, i) => {
+            gsap.from(item, {
+                y: 50,
+                opacity: 0,
+                scale: 0.95,
+                duration: 1.2,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top 85%", // Start animation when top of item is 85% in viewport
+                    end: "bottom center",
+                    toggleActions: "play none none reverse", // Play once, reverse when scrolling back up
+                    // markers: true, // For debugging
+                }
+            });
+        });
+
+        // Referral button hover effect
+        gsap.to(".referral button", {
+            scale: 1.03,
+            repeat: -1,
+            yoyo: true,
+            duration: 0.8,
+            ease: "power1.inOut"
+        });
+
+        // Mobile menu functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenuOverlay.classList.remove('-translate-x-full');
+        });
+
+        closeMenuButton.addEventListener('click', () => {
+            mobileMenuOverlay.classList.add('-translate-x-full');
+        });
+        
+        // Close menu when clicking on a link
+        mobileMenuOverlay.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuOverlay.classList.add('-translate-x-full');
+            });
+        });
+    </script>
+</body>
+</html>
