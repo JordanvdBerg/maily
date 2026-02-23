@@ -1,0 +1,532 @@
+<!-- EXPERIMENTAL -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpaceJunkies - Galactic Goodies & Cosmic Couture!</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Inter:wght@300..900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWTFoEw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+        /* Custom styles for glowing effects */
+        .neon-glow {
+            text-shadow: 0 0 5px var(--tw-shadow-color, currentColor), 0 0 10px var(--tw-shadow-color, currentColor), 0 0 15px var(--tw-shadow-color, currentColor);
+        }
+        .neon-border {
+            box-shadow: 0 0 5px var(--tw-shadow-color, currentColor), 0 0 10px var(--tw-shadow-color, currentColor);
+        }
+        /* Gradient background for hero */
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--tw-gradient-stops));
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif;
+        }
+        /* Custom scrollbar for a futuristic feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #00FFFF; /* neon-blue */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FF00FF; /* neon-pink */
+        }
+
+        /* Basic animation for the Vibe text */
+        @keyframes pulse-slow {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+        .animate-pulse-slow {
+            animation: pulse-slow 3s ease-in-out infinite;
+        }
+    </style>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-bg': '#0B0B1F', /* Deep space background */
+                        'neon-blue': '#00FFFF',
+                        'neon-pink': '#FF00FF',
+                        'neon-green': '#00FF00',
+                        'neon-yellow': '#FFFF00',
+                        'neon-purple': '#8A2BE2',
+                        'accent-1': '#00BFFF', /* Deeper cyan */
+                        'accent-2': '#DA70D6', /* Orchid */
+                    },
+                    fontFamily: {
+                        orbitron: ['Orbitron', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    keyframes: {
+                        glow: {
+                            '0%, 100%': { filter: 'brightness(1)' },
+                            '50%': { filter: 'brightness(1.5)' },
+                        },
+                        glitch: {
+                            '0%, 10%': { transform: 'translate(0)' },
+                            '15%': { transform: 'translate(-2px, -2px)' },
+                            '20%': { transform: 'translate(2px, 2px)' },
+                            '25%': { transform: 'translate(-2px, 2px)' },
+                            '30%': { transform: 'translate(2px, -2px)' },
+                            '35%': { transform: 'translate(0)' },
+                            '40%, 100%': { transform: 'translate(0)' },
+                        }
+                    },
+                    animation: {
+                        glow: 'glow 2s ease-in-out infinite',
+                        glitch: 'glitch 0.8s infinite',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-dark-bg text-gray-200 antialiased overflow-x-hidden font-inter">
+    
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 p-4 bg-dark-bg/80 backdrop-blur-sm shadow-lg border-b border-neon-blue/20">
+        <nav class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-3xl font-orbitron text-neon-blue neon-glow shadow-neon-blue tracking-wider">
+                Space<span class="text-neon-pink">Junkies</span>
+            </a>
+            <div class="hidden md:flex space-x-8 text-lg">
+                <a href="#sweets" class="hover:text-neon-green transition duration-300">Sweets</a>
+                <a href="#costumes" class="hover:text-neon-green transition duration-300">Costumes</a>
+                <a href="#vibe" class="hover:text-neon-green transition duration-300">The Vibe</a>
+                <a href="#connect" class="hover:text-neon-green transition duration-300">Connect</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-neon-blue focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-dark-bg/95 backdrop-blur-sm py-4 shadow-xl border-t border-neon-blue/20">
+            <nav class="flex flex-col items-center space-y-4 text-lg">
+                <a href="#sweets" class="hover:text-neon-green transition duration-300 w-full text-center py-2">Sweets</a>
+                <a href="#costumes" class="hover:text-neon-green transition duration-300 w-full text-center py-2">Costumes</a>
+                <a href="#vibe" class="hover:text-neon-green transition duration-300 w-full text-center py-2">The Vibe</a>
+                <a href="#connect" class="hover:text-neon-green transition duration-300 w-full text-center py-2">Connect</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="relative min-h-screen flex items-center justify-center p-4 pt-24 hero-gradient from-dark-bg via-purple-950 to-dark-bg text-center overflow-hidden">
+            <div class="absolute inset-0 z-0 opacity-20">
+                <!-- Placeholder for subtle background animation/texture -->
+                <div class="absolute inset-0 bg-[url('https://source.unsplash.com/random/1920x1080?abstract-futuristic-grid')] bg-cover bg-center opacity-10 blur-sm"></div>
+                <div class="absolute inset-0 bg-[url('https://source.unsplash.com/random/1920x1080?neon-lights-abstract')] bg-cover bg-center opacity-10 mix-blend-screen"></div>
+            </div>
+            <div class="relative z-10 max-w-4xl mx-auto">
+                <h1 class="text-5xl md:text-7xl font-orbitron font-extrabold mb-6 leading-tight text-white">
+                    <span class="block text-neon-blue shadow-neon-blue neon-glow">Galactic Goodies</span>
+                    <span class="block text-neon-pink shadow-neon-pink neon-glow mt-2">Cosmic Couture</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto neon-glow shadow-neon-green/50">
+                    Dive into a universe where sweet dreams meet wild adventures.
+                    <br class="hidden md:block"> Your portal to playful delights is open!
+                </p>
+                <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6">
+                    <a href="#sweets" class="cta-button bg-neon-green text-dark-bg py-3 px-8 rounded-full text-lg font-bold hover:bg-neon-yellow transition duration-300 shadow-lg shadow-neon-green/50">
+                        Explore Sweets!
+                    </a>
+                    <a href="#costumes" class="cta-button bg-neon-pink text-dark-bg py-3 px-8 rounded-full text-lg font-bold hover:bg-neon-blue transition duration-300 shadow-lg shadow-neon-pink/50">
+                        Find Your Vibe!
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Showcase - Sweets Bento Box -->
+        <section id="sweets" class="py-20 md:py-32 relative bg-gradient-to-br from-dark-bg to-purple-950 border-t border-b border-neon-purple/30">
+            <div class="container mx-auto px-4 relative z-10">
+                <h2 class="text-4xl md:text-5xl font-orbitron text-center mb-16 text-neon-blue neon-glow shadow-neon-blue/70">
+                    Sweet Stardust Delights
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
+
+                    <!-- Sweet Item 1 -->
+                    <div class="bento-box-item relative bg-zinc-900 border border-neon-blue/30 rounded-xl p-6 md:p-8 flex flex-col justify-between overflow-hidden shadow-xl shadow-neon-blue/10">
+                        <div class="absolute inset-0 bg-[url('https://source.unsplash.com/random/400x300?space-candy,colorful')] bg-cover bg-center opacity-10 mix-blend-lighten"></div>
+                        <h3 class="text-3xl font-orbitron text-neon-yellow mb-3 neon-glow shadow-neon-yellow/50 z-10">Nebula Nibs</h3>
+                        <p class="text-gray-300 mb-4 z-10 flex-grow">
+                            Taste the swirling wonders of the cosmos! These chewy, fruit-flavored nuggets are packed with intergalactic tang and a satisfying pop. Perfect for a quick energy boost during your space travels.
+                        </p>
+                        <div class="flex justify-between items-center z-10">
+                            <span class="text-2xl font-bold text-neon-green neon-glow shadow-neon-green/50">$4.99</span>
+                            <button class="bg-neon-pink text-dark-bg py-2 px-5 rounded-full text-sm font-bold hover:bg-neon-blue transition duration-300">Add to Orbit</button>
+                        </div>
+                    </div>
+
+                    <!-- Sweet Item 2 (Larger) -->
+                    <div class="bento-box-item relative bg-zinc-900 border border-neon-pink/30 rounded-xl p-6 md:p-8 flex flex-col justify-between lg:col-span-2 overflow-hidden shadow-xl shadow-neon-pink/10">
+                        <div class="absolute inset-0 bg-[url('https://source.unsplash.com/random/800x400?futuristic-dessert,lollipop')] bg-cover bg-center opacity-10 mix-blend-lighten"></div>
+                        <h3 class="text-3xl font-orbitron text-neon-blue mb-3 neon-glow shadow-neon-blue/50 z-10">Starlight Lollipops</h3>
+                        <p class="text-gray-300 mb-4 z-10 flex-grow">
+                            Hand-crafted constellations on a stick! Each lollipop features a unique galaxy design, bursting with exotic fruit flavors and a shimmering edible glitter that captures the light of distant stars.
+                        </p>
+                        <div class="flex justify-between items-center z-10">
+                            <span class="text-2xl font-bold text-neon-green neon-glow shadow-neon-green/50">$2.50 each</span>
+                            <button class="bg-neon-green text-dark-bg py-2 px-5 rounded-full text-sm font-bold hover:bg-neon-yellow transition duration-300">Grab a Star</button>
+                        </div>
+                    </div>
+
+                    <!-- Sweet Item 3 -->
+                    <div class="bento-box-item relative bg-zinc-900 border border-neon-green/30 rounded-xl p-6 md:p-8 flex flex-col justify-between overflow-hidden shadow-xl shadow-neon-green/10">
+                        <div class="absolute inset-0 bg-[url('https://source.unsplash.com/random/400x300?sci-fi-chocolate,gummy')] bg-cover bg-center opacity-10 mix-blend-lighten"></div>
+                        <h3 class="text-3xl font-orbitron text-neon-pink mb-3 neon-glow shadow-neon-pink/50 z-10">Lunar Levitation Gummy</h3>
+                        <p class="text-gray-300 mb-4 z-10 flex-grow">
+                            Experience zero-G with these uniquely textured gummies that seem to float on your tongue. Infused with lunar berry extracts for a truly out-of-this-world taste.
+                        </p>
+                        <div class="flex justify-between items-center z-10">
+                            <span class="text-2xl font-bold text-neon-green neon-glow shadow-neon-green/50">$6.99</span>
+                            <button class="bg-neon-blue text-dark-bg py-2 px-5 rounded-full text-sm font-bold hover:bg-neon-pink transition duration-300">Float Away</button>
+                        </div>
+                    </div>
+
+                     <!-- Sweet Item 4 (Small, perhaps a special offer) -->
+                     <div class="bento-box-item relative bg-zinc-900 border border-neon-yellow/30 rounded-xl p-6 md:p-8 flex flex-col justify-between overflow-hidden shadow-xl shadow-neon-yellow/10">
+                        <div class="absolute inset-0 bg-[url('https://source.unsplash.com/random/400x300?space-cookie,dessert')] bg-cover bg-center opacity-10 mix-blend-lighten"></div>
+                        <h3 class="text-2xl font-orbitron text-neon-green mb-3 neon-glow shadow-neon-green/50 z-10">Astro Bites</h3>
+                        <p class="text-gray-300 mb-4 z-10 text-sm flex-grow">
+                            Crunchy, cosmic cookies. Bite-sized bliss for your interstellar journey! Perfect for sharing (or not).
+                        </p>
+                        <div class="flex justify-between items-center z-10">
+                            <span class="text-xl font-bold text-neon-pink neon-glow shadow-neon-pink/50">$3.00</span>
+                            <button class="bg-neon-blue text-dark-bg py-2 px-4 rounded-full text-xs font-bold hover:bg-neon-green transition duration-300">Grab 'em</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Showcase - Costumes Bento Box -->
+        <section id="costumes" class="py-20 md:py-32 relative bg-gradient-to-tl from-dark-bg to-purple-950 border-t border-b border-neon-green/30">
+            <div class="container mx-auto px-4 relative z-10">
+                <h2 class="text-4xl md:text-5xl font-orbitron text-center mb-16 text-neon-pink neon-glow shadow-neon-pink/70">
+                    Cosmic Couture Collection
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
+
+                    <!-- Costume Item 1 (Larger) -->
+                    <div class="bento-box-item relative bg-zinc-900 border border-neon-green/30 rounded-xl p-6 md:p-8 flex flex-col justify-between lg:col-span-2 overflow-hidden shadow-xl shadow-neon-green/10">
+                        <div class="absolute inset-0 bg-[url('https://source.unsplash.com/random/800x400?futuristic-outfit,cyberpunk')] bg-cover bg-center opacity-10 mix-blend-lighten"></div>
+                        <h3 class="text-3xl font-orbitron text-neon-blue mb-3 neon-glow shadow-neon-blue/50 z-10">Astro-Punk Ensemble</h3>
+                        <p class="text-gray-300 mb-4 z-10 flex-grow">
+                            Channel your inner rebel with this daring outfit. Featuring holographic fabrics, LED accents, and utility straps, it's perfect for navigating asteroid fields or the wildest intergalactic parties.
+                        </p>
+                        <div class="flex justify-between items-center z-10">
+                            <span class="text-2xl font-bold text-neon-yellow neon-glow shadow-neon-yellow/50">$189.99</span>
+                            <button class="bg-neon-pink text-dark-bg py-2 px-5 rounded-full text-sm font-bold hover:bg-neon-blue transition duration-300">Suit Up</button>
+                        </div>
+                    </div>
+
+                    <!-- Costume Item 2 -->
+                    <div class="bento-box-item relative bg-zinc-900 border border-neon-yellow/30 rounded-xl p-6 md:p-8 flex flex-col justify-between overflow-hidden shadow-xl shadow-neon-yellow/10">
+                        <div class="absolute inset-0 bg-[url('https://source.unsplash.com/random/400x300?alien-costume,explorer')] bg-cover bg-center opacity-10 mix-blend-lighten"></div>
+                        <h3 class="text-3xl font-orbitron text-neon-green mb-3 neon-glow shadow-neon-green/50 z-10">Zenith Zookeeper</h3>
+                        <p class="text-gray-300 mb-4 z-10 flex-grow">
+                            For the intrepid explorer of alien fauna! This comfortable yet stylish jumpsuit comes with multi-pocket utility vest and a matching visor, ensuring you're ready for any close encounter.
+                        </p>
+                        <div class="flex justify-between items-center z-10">
+                            <span class="text-2xl font-bold text-neon-yellow neon-glow shadow-neon-yellow/50">$129.00</span>
+                            <button class="bg-neon-blue text-dark-bg py-2 px-5 rounded-full text-sm font-bold hover:bg-neon-pink transition duration-300">Capture Species</button>
+                        </div>
+                    </div>
+
+                    <!-- Costume Item 3 -->
+                    <div class="bento-box-item relative bg-zinc-900 border border-neon-blue/30 rounded-xl p-6 md:p-8 flex flex-col justify-between overflow-hidden shadow-xl shadow-neon-blue/10">
+                        <div class="absolute inset-0 bg-[url('https://source.unsplash.com/random/400x300?robot-costume,dancer')] bg-cover bg-center opacity-10 mix-blend-lighten"></div>
+                        <h3 class="text-3xl font-orbitron text-neon-pink mb-3 neon-glow shadow-neon-pink/50 z-10">Cyberspace Diva</h3>
+                        <p class="text-gray-300 mb-4 z-10 flex-grow">
+                            Rule the virtual runways and real-world dance floors. This metallic mini-dress with integrated light-up panels ensures all eyes are on you. Be the star of every nebula!
+                        </p>
+                        <div class="flex justify-between items-center z-10">
+                            <span class="text-2xl font-bold text-neon-yellow neon-glow shadow-neon-yellow/50">$159.00</span>
+                            <button class="bg-neon-green text-dark-bg py-2 px-5 rounded-full text-sm font-bold hover:bg-neon-blue transition duration-300">Own the Night</button>
+                        </div>
+                    </div>
+
+                    <!-- Costume Item 4 -->
+                    <div class="bento-box-item relative bg-zinc-900 border border-neon-purple/30 rounded-xl p-6 md:p-8 flex flex-col justify-between overflow-hidden shadow-xl shadow-neon-purple/10">
+                        <div class="absolute inset-0 bg-[url('https://source.unsplash.com/random/400x300?space-explorer,armor')] bg-cover bg-center opacity-10 mix-blend-lighten"></div>
+                        <h3 class="text-2xl font-orbitron text-neon-blue mb-3 neon-glow shadow-neon-blue/50 z-10">Galactic Guardian</h3>
+                        <p class="text-gray-300 mb-4 z-10 text-sm flex-grow">
+                            Protective and powerful! A sleek, armored suit for cosmic defenders, ready for any mission across the galaxies.
+                        </p>
+                        <div class="flex justify-between items-center z-10">
+                            <span class="text-xl font-bold text-neon-yellow neon-glow shadow-neon-yellow/50">$199.00</span>
+                            <button class="bg-neon-pink text-dark-bg py-2 px-4 rounded-full text-xs font-bold hover:bg-neon-green transition duration-300">Defend!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Vibe / About Us Section -->
+        <section id="vibe" class="py-20 md:py-32 relative overflow-hidden bg-gradient-to-tr from-dark-bg via-fuchsia-950 to-dark-bg border-t border-b border-neon-purple/30">
+            <div class="absolute inset-0 z-0 opacity-10">
+                <div class="absolute inset-0 bg-[url('https://source.unsplash.com/random/1920x1080?futuristic-club-interior')] bg-cover bg-center mix-blend-lighten opacity-5"></div>
+            </div>
+            <div class="container mx-auto px-4 relative z-10 flex flex-col lg:flex-row items-center lg:justify-between gap-12">
+                <div class="lg:w-1/2 text-center lg:text-left">
+                    <h2 class="text-4xl md:text-5xl font-orbitron text-neon-purple mb-6 leading-tight neon-glow shadow-neon-purple/70">
+                        Tune into Our Frequency: The SpaceJunkies Vibe
+                    </h2>
+                    <p class="text-lg text-gray-300 mb-6 max-w-xl mx-auto lg:mx-0">
+                        More than just a store, SpaceJunkies is your ultimate portal to a vibrant,
+                        futuristic club experience! We've curated a universe where the energy is
+                        electric, the colors are neon, and every visit feels like a cosmic party.
+                    </p>
+                    <p class="text-lg text-gray-300 max-w-xl mx-auto lg:mx-0">
+                        Step into a realm of playful wonder, where tantalizing treats and
+                        out-of-this-world costumes await to ignite your imagination.
+                        Get ready to groove, discover, and express your inner space explorer!
+                    </p>
+                </div>
+                <div class="lg:w-1/2 relative flex justify-center items-center">
+                    <div class="w-full max-w-md h-64 md:h-80 lg:h-96 rounded-3xl bg-gradient-to-br from-neon-blue to-neon-pink p-1 shadow-2xl shadow-neon-purple/50">
+                        <div class="w-full h-full rounded-3xl bg-[url('https://source.unsplash.com/random/600x400?futuristic-party')] bg-cover bg-center overflow-hidden flex items-center justify-center">
+                            <span class="text-5xl md:text-6xl font-orbitron text-white opacity-90 neon-glow shadow-neon-green/50 animate-pulse-slow">VIBE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Business Hours & Contact Info -->
+        <section id="connect" class="py-20 md:py-32 relative bg-dark-bg border-t border-b border-neon-blue/30">
+            <div class="container mx-auto px-4 relative z-10">
+                <h2 class="text-4xl md:text-5xl font-orbitron text-center mb-16 text-neon-green neon-glow shadow-neon-green/70">
+                    Connect Across the Cosmos
+                </h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Business Hours -->
+                    <div class="bento-box-item bg-zinc-900 border border-neon-blue/30 rounded-xl p-8 shadow-xl shadow-neon-blue/10 flex flex-col justify-center text-center lg:text-left">
+                        <h3 class="text-3xl font-orbitron text-neon-pink mb-4 neon-glow shadow-neon-pink/50">When the Wormhole Opens</h3>
+                        <p class="text-xl text-gray-300 mb-2">
+                            <i class="fas fa-calendar-alt text-neon-green mr-3"></i> Monday - Friday:
+                            <span class="font-bold text-neon-yellow ml-2">10 AM - 6 PM (Earth Time)</span>
+                        </p>
+                        <p class="text-lg text-gray-400">
+                            Our physical portal is closed on weekends for cosmic maintenance.
+                            But our online universe is always open!
+                        </p>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="bento-box-item bg-zinc-900 border border-neon-pink/30 rounded-xl p-8 shadow-xl shadow-neon-pink/10 flex flex-col justify-center text-center lg:text-left">
+                        <h3 class="text-3xl font-orbitron text-neon-blue mb-4 neon-glow shadow-neon-blue/50">Beam Us Up!</h3>
+                        <p class="text-xl text-gray-300 mb-2">
+                            <i class="fas fa-map-marker-alt text-neon-green mr-3"></i> Galactic Plaza, Unit 7, Neo-Earth City
+                        </p>
+                        <p class="text-xl text-gray-300 mb-2">
+                            <i class="fas fa-envelope text-neon-green mr-3"></i> <a href="mailto:info@spacejunkies.com" class="text-neon-yellow hover:underline">info@spacejunkies.com</a>
+                        </p>
+                        <p class="text-xl text-gray-300">
+                            <i class="fas fa-phone text-neon-green mr-3"></i> <a href="tel:+15551234567" class="text-neon-yellow hover:underline">(555) 123-4567</a>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="mt-20 bento-box-item bg-zinc-900 border border-neon-green/30 rounded-xl p-8 shadow-xl shadow-neon-green/10 max-w-2xl mx-auto">
+                    <h3 class="text-3xl font-orbitron text-neon-yellow text-center mb-8 neon-glow shadow-neon-yellow/50">Send a Transmission</h3>
+                    <form action="#" method="POST" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-lg font-orbitron text-neon-blue mb-2">Your Cosmic Name:</label>
+                            <input type="text" id="name" name="name" class="w-full p-3 rounded-md bg-dark-bg border border-neon-blue/50 text-white focus:ring-2 focus:ring-neon-green focus:border-transparent outline-none transition-all" placeholder="Starlight Seeker">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-lg font-orbitron text-neon-blue mb-2">Your Galactic Email:</label>
+                            <input type="email" id="email" name="email" class="w-full p-3 rounded-md bg-dark-bg border border-neon-blue/50 text-white focus:ring-2 focus:ring-neon-green focus:border-transparent outline-none transition-all" placeholder="your@galaxymail.com">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-lg font-orbitron text-neon-blue mb-2">Your Message Coordinates:</label>
+                            <textarea id="message" name="message" rows="5" class="w-full p-3 rounded-md bg-dark-bg border border-neon-blue/50 text-white focus:ring-2 focus:ring-neon-green focus:border-transparent outline-none transition-all" placeholder="Tell us about your next adventure or query..."></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="bg-neon-pink text-dark-bg py-3 px-8 rounded-full text-lg font-bold hover:bg-neon-yellow transition duration-300 shadow-lg shadow-neon-pink/50 neon-glow shadow-neon-pink">
+                                Transmit Message!
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-bg py-12 border-t border-neon-green/30">
+        <div class="container mx-auto px-4 text-center">
+            <a href="#" class="text-3xl font-orbitron text-neon-blue neon-glow shadow-neon-blue tracking-wider mb-6 inline-block">
+                Space<span class="text-neon-pink">Junkies</span>
+            </a>
+            <p class="text-gray-400 text-sm mt-4">
+                &copy; 2024 SpaceJunkies. All rights reserved. Journey responsibly.
+            </p>
+            <div class="flex justify-center space-x-6 mt-8">
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="text-gray-400 hover:text-neon-pink transition duration-300 text-3xl">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="text-gray-400 hover:text-neon-blue transition duration-300 text-3xl">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://x.com" target="_blank" aria-label="X (Twitter)" class="text-gray-400 hover:text-neon-green transition duration-300 text-3xl">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+                <a href="https://tiktok.com" target="_blank" aria-label="TikTok" class="text-gray-400 hover:text-neon-yellow transition duration-300 text-3xl">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="text-gray-400 hover:text-neon-purple transition duration-300 text-3xl">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GSAP & ScrollTrigger CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        document.querySelectorAll('#mobile-menu a').forEach(item => {
+            item.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Hero Section Animations
+        gsap.timeline({
+            defaults: { ease: "power3.out", duration: 1.2 }
+        })
+        .from("h1 span", {
+            y: 50,
+            opacity: 0,
+            stagger: 0.3,
+            delay: 0.5
+        })
+        .from("#hero p", {
+            y: 30,
+            opacity: 0,
+            duration: 1
+        }, "-=0.6")
+        .from(".cta-button", {
+            y: 20,
+            opacity: 0,
+            stagger: 0.2,
+            duration: 0.8
+        }, "-=0.5");
+
+        // Bento Box Animations
+        gsap.utils.toArray(".bento-box-item").forEach((item, i) => {
+            gsap.from(item, {
+                opacity: 0,
+                y: 50,
+                scale: 0.95,
+                duration: 1,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top 85%", // when the top of the item is 85% in viewport
+                    end: "bottom center",
+                    toggleActions: "play none none reverse", // play on scroll in, reverse on scroll out
+                }
+            });
+        });
+
+        // The Vibe Section Animation (image and text)
+        gsap.from("#vibe h2", {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: "#vibe",
+                start: "top 75%",
+                toggleActions: "play none none reverse",
+            }
+        });
+        gsap.from("#vibe p", {
+            opacity: 0,
+            y: 30,
+            stagger: 0.2,
+            duration: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: "#vibe",
+                start: "top 70%",
+                toggleActions: "play none none reverse",
+            }
+        });
+        gsap.from("#vibe .w-full.max-w-md", { /* targeting the image container */
+            opacity: 0,
+            scale: 0.8,
+            rotation: 10,
+            duration: 1.5,
+            ease: "elastic.out(1, 0.5)",
+            scrollTrigger: {
+                trigger: "#vibe .w-full.max-w-md",
+                start: "top 80%",
+                toggleActions: "play none none reverse",
+            }
+        });
+
+        // Sticky Header color change on scroll
+        gsap.to("header", {
+            backgroundColor: "rgb(11 11 31 / 0.95)", /* dark-bg with more opacity */
+            borderColor: "rgb(0 255 255 / 0.5)", /* neon-blue/50 */
+            boxShadow: "0 10px 15px -3px rgb(0 255 255 / 0.1), 0 4px 6px -4px rgb(0 255 255 / 0.1)",
+            duration: 0.3,
+            ease: "power1.out",
+            scrollTrigger: {
+                trigger: "body",
+                start: "top -100px", /* when scrolled 100px down */
+                end: "bottom top",
+                toggleActions: "play reverse play reverse",
+            }
+        });
+    </script>
+</body>
+</html>
