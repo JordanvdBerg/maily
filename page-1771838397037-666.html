@@ -1,0 +1,493 @@
+<!-- EXPERIMENTAL -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpaceJunkies - Your Neon Universe of Sweets & Costumes</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;700&display=swap');
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0d0117; /* Deep cosmic purple */
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif;
+            color: #d1ff00; /* Neon yellow-green */
+            text-shadow: 0 0 8px #d1ff00, 0 0 16px #d1ff00;
+        }
+
+        .neon-text-pink {
+            color: #ff00ff; /* Electric pink */
+            text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff;
+        }
+
+        .neon-text-blue {
+            color: #00ffff; /* Aqua blue */
+            text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+        }
+
+        .neon-glow-btn {
+            background-color: transparent;
+            border: 2px solid #00ffff;
+            color: #00ffff;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 0 10px #00ffff;
+        }
+
+        .neon-glow-btn:hover {
+            background-color: #00ffff;
+            color: #0d0117;
+            box-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff;
+        }
+
+        .neon-bg-panel {
+            background-color: rgba(13, 1, 23, 0.7); /* Slightly transparent dark */
+            border: 1px solid rgba(0, 255, 255, 0.3); /* Subtle aqua border */
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2), inset 0 0 5px rgba(0, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+        
+        .burger-menu-icon {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            cursor: pointer;
+            width: 40px;
+            height: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .burger-menu-icon span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background: #ff00ff;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 0 5px #ff00ff;
+        }
+
+        .burger-menu-icon.active span:nth-child(1) {
+            transform: translateY(13px) rotate(45deg);
+        }
+
+        .burger-menu-icon.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger-menu-icon.active span:nth-child(3) {
+            transform: translateY(-13px) rotate(-45deg);
+        }
+
+        .overlay-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(13, 1, 23, 0.95);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease-in-out;
+        }
+
+        .overlay-nav.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .overlay-nav a {
+            font-family: 'Orbitron', sans-serif;
+            color: #d1ff00;
+            font-size: 3rem;
+            text-shadow: 0 0 10px #d1ff00, 0 0 20px #d1ff00;
+            margin: 1rem 0;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .overlay-nav a:hover {
+            color: #00ffff;
+            text-shadow: 0 0 15px #00ffff, 0 0 25px #00ffff;
+            transform: scale(1.05);
+        }
+        
+        .glitch-effect {
+            animation: glitch 2s linear infinite;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
+        /* Specific styles for overlapping layers */
+        .layer-bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(0.7) contrast(1.2); /* Darken and punch up colors */
+        }
+
+        .content-overlay {
+            position: relative;
+            z-index: 10;
+        }
+
+        .neon-border-gradient {
+            background: linear-gradient(45deg, #ff00ff, #00ffff, #d1ff00, #ff00ff);
+            background-size: 200% 200%;
+            animation: gradient-shift 5s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Burger Menu Icon -->
+    <div id="burger-menu" class="burger-menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Overlay Navigation -->
+    <nav id="overlay-nav" class="overlay-nav">
+        <a href="#home">/ HOME</a>
+        <a href="#sweets">/ COSMIC SWEETS</a>
+        <a href="#costumes">/ CELESTIAL COSTUMES</a>
+        <a href="#visit">/ VISIT US</a>
+    </nav>
+
+    <!-- PAGE: Home -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center p-8 overflow-hidden">
+        <div class="layer-bg-image opacity-30" style="background-image: url('https://images.unsplash.com/photo-1518349250009-848e026c0680?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-900 to-indigo-900 opacity-60"></div>
+
+        <div class="content-overlay relative z-10 text-center max-w-4xl mx-auto">
+            <h1 class="text-6xl md:text-8xl font-bold uppercase mb-6 leading-tight glitch-effect neon-text-pink" style="animation-duration: 4s;">
+                SpaceJunkies
+            </h1>
+            <p class="text-xl md:text-3xl text-gray-200 mb-10 orbitron-font neon-text-blue" style="font-family: 'Orbitron', sans-serif;">
+                Vending the Universe's Most <span class="text-d1ff00 neon-text-yellow">Hypnotic Sweets</span> & <span class="text-d1ff00 neon-text-yellow">Galactic Costumes</span>
+            </p>
+            <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-8 mt-12">
+                <a href="#sweets" class="neon-glow-btn px-8 py-4 uppercase font-bold text-lg rounded-full animate-pulse-light">
+                    Explore Sweets
+                </a>
+                <a href="#costumes" class="neon-glow-btn px-8 py-4 uppercase font-bold text-lg rounded-full animate-pulse-light">
+                    Discover Costumes
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE: Cosmic Sweets -->
+    <section id="sweets" class="relative min-h-screen py-24 px-8 overflow-hidden bg-gradient-to-br from-purple-900 to-indigo-900">
+        <div class="layer-bg-image opacity-30" style="background-image: url('https://images.unsplash.com/photo-1542838334-a69c8a164b0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80'); transform: scaleX(-1);"></div>
+        
+        <div class="content-overlay relative z-10 max-w-7xl mx-auto">
+            <h2 class="text-5xl md:text-7xl font-bold uppercase text-center mb-16 neon-text-blue orbitron-font gs_reveal">
+                Cosmic Sweets
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                <!-- Sweet Card 1 -->
+                <div class="relative neon-bg-panel p-6 pb-20 rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl gs_reveal_from_left">
+                    <img src="https://images.unsplash.com/photo-1560965319-e568340d1656?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Nebula Nougat" class="w-full h-48 object-cover rounded-md mb-6 opacity-80" style="object-position: center 20%;">
+                    <h3 class="text-3xl font-bold neon-text-pink mb-4">Nebula Nougat</h3>
+                    <p class="text-gray-300 mb-4">Taste the stardust! Our Nebula Nougat is a chewy, ethereal delight swirled with fruit flavors from distant galaxies.</p>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <button class="neon-glow-btn w-full py-3 rounded-full uppercase font-bold text-sm">Hypnotize Me</button>
+                    </div>
+                </div>
+
+                <!-- Sweet Card 2 -->
+                <div class="relative neon-bg-panel p-6 pb-20 rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl gs_reveal_from_bottom">
+                    <img src="https://images.unsplash.com/photo-1582239634898-d14f49437976?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Quantum Gummies" class="w-full h-48 object-cover rounded-md mb-6 opacity-80" style="object-position: center 80%;">
+                    <h3 class="text-3xl font-bold neon-text-blue mb-4">Quantum Gummies</h3>
+                    <p class="text-gray-300 mb-4">Tiny, tangy explosions that shift flavor with every chew. Experience the unpredictable joy of Quantum Gummies!</p>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <button class="neon-glow-btn w-full py-3 rounded-full uppercase font-bold text-sm">Unlock Flavor</button>
+                    </div>
+                </div>
+
+                <!-- Sweet Card 3 -->
+                <div class="relative neon-bg-panel p-6 pb-20 rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl gs_reveal_from_right">
+                    <img src="https://images.unsplash.com/photo-1621939109955-e41c4f526019?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Supernova Lollipops" class="w-full h-48 object-cover rounded-md mb-6 opacity-80">
+                    <h3 class="text-3xl font-bold neon-text-pink mb-4">Supernova Lollipops</h3>
+                    <p class="text-gray-300 mb-4">A dazzling display of crunch and sweetness, these lollipops mimic exploding stars in your mouth.</p>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <button class="neon-glow-btn w-full py-3 rounded-full uppercase font-bold text-sm">Get Starry</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-20 gs_reveal">
+                <p class="text-xl md:text-2xl text-gray-200 mb-6 neon-text-yellow">
+                    Our confectionery artisans explore uncharted sugar dimensions.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE: Celestial Costumes -->
+    <section id="costumes" class="relative min-h-screen py-24 px-8 overflow-hidden bg-gradient-to-tl from-indigo-900 to-purple-900">
+        <div class="layer-bg-image opacity-30" style="background-image: url('https://images.unsplash.com/photo-1558299839-4467d020e987?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80'); filter: hue-rotate(180deg) brightness(0.7);"></div>
+
+        <div class="content-overlay relative z-10 max-w-7xl mx-auto">
+            <h2 class="text-5xl md:text-7xl font-bold uppercase text-center mb-16 neon-text-pink orbitron-font gs_reveal">
+                Celestial Costumes
+            </h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Costume Block 1 -->
+                <div class="relative neon-bg-panel p-8 rounded-lg shadow-lg flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8 gs_reveal_from_left">
+                    <img src="https://images.unsplash.com/photo-1544465494-b251d5225c28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Alien Overlord Ensemble" class="w-full md:w-1/2 h-64 object-cover rounded-md opacity-80">
+                    <div class="md:w-1/2">
+                        <h3 class="text-4xl font-bold neon-text-blue mb-4">Alien Overlord Ensemble</h3>
+                        <p class="text-gray-300 mb-6">Command the cosmos with this stunning, high-tech suit. Features bioluminescent accents and integrated voice modulator.</p>
+                        <button class="neon-glow-btn px-6 py-3 uppercase font-bold text-md rounded-full">Rule the Galaxy</button>
+                    </div>
+                </div>
+
+                <!-- Costume Block 2 -->
+                <div class="relative neon-bg-panel p-8 rounded-lg shadow-lg flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8 gs_reveal_from_right">
+                    <img src="https://images.unsplash.com/photo-1596495577886-f6d8955d8f6f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Interstellar Diva Gown" class="w-full md:w-1/2 h-64 object-cover rounded-md opacity-80" style="object-position: center 30%;">
+                    <div class="md:w-1/2">
+                        <h3 class="text-4xl font-bold neon-text-pink mb-4">Interstellar Diva Gown</h3>
+                        <p class="text-gray-300 mb-6">Shine brighter than a supernova in this flowy, iridescent gown, perfect for any cosmic gala or club night.</p>
+                        <button class="neon-glow-btn px-6 py-3 uppercase font-bold text-md rounded-full">Glow Up</button>
+                    </div>
+                </div>
+
+                <!-- Quote Section -->
+                <div class="lg:col-span-2 text-center mt-20 gs_reveal">
+                    <p class="text-2xl md:text-3xl italic text-gray-200 neon-text-yellow">
+                        "Your identity is fluid. Transform it with SpaceJunkies."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE: Visit Us -->
+    <section id="visit" class="relative min-h-screen py-24 px-8 overflow-hidden bg-gradient-to-br from-indigo-900 to-purple-900">
+        <div class="layer-bg-image opacity-30" style="background-image: url('https://images.unsplash.com/photo-1520616149156-f699049a4448?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');"></div>
+
+        <div class="content-overlay relative z-10 max-w-7xl mx-auto flex flex-col items-center">
+            <h2 class="text-5xl md:text-7xl font-bold uppercase text-center mb-16 neon-text-blue orbitron-font gs_reveal">
+                Visit Our Hub
+            </h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full">
+                <!-- Location & Hours Panel -->
+                <div class="relative neon-bg-panel p-8 rounded-lg shadow-lg gs_reveal_from_left">
+                    <h3 class="text-4xl font-bold neon-text-pink mb-6">Dimension Coordinates</h3>
+                    <p class="text-xl text-gray-300 mb-4"><strong>Intergalactic Mall, Level 7</strong></p>
+                    <p class="text-xl text-gray-300 mb-8">Quadrant Alpha-7, Sector Nu-Prime</p>
+
+                    <h3 class="text-4xl font-bold neon-text-blue mb-6">Trading Hours</h3>
+                    <ul class="text-xl text-gray-300 space-y-2">
+                        <li>Monday - Friday: <span class="neon-text-yellow">10 AM - 18 PM</span></li>
+                        <li>Saturday - Sunday: <span class="text-gray-500">CLOSED</span></li>
+                    </ul>
+                </div>
+
+                <!-- Futuristic Map / Abstract Visual -->
+                <div class="relative neon-bg-panel p-8 rounded-lg shadow-lg flex items-center justify-center min-h-[300px] gs_reveal_from_right">
+                    <div class="relative w-full h-full flex items-center justify-center">
+                        <div class="absolute inset-4 neon-border-gradient rounded-full opacity-50 blur-sm animate-pulse"></div>
+                        <div class="relative z-10 text-center">
+                            <i class="fas fa-map-marker-alt text-7xl neon-text-pink animate-bounce-slow"></i>
+                            <p class="text-2xl neon-text-blue mt-4">Find Your Way to the Portal</p>
+                            <p class="text-sm text-gray-400 mt-2">(No actual map provided, follow the glow)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-20 gs_reveal">
+                <p class="text-xl md:text-2xl text-gray-200 neon-text-yellow">
+                    We await your arrival in our vibrant cosmos.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-16 px-8 text-center border-t border-purple-800">
+        <div class="max-w-7xl mx-auto">
+            <p class="text-xl mb-8 neon-text-pink">SpaceJunkies &copy; 2024 - All Rights Reserved in This Dimension</p>
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="text-3xl text-gray-400 hover:text-instagram transition-colors duration-300" style="--fa-primary-color: #E1306C; --fa-secondary-color: #E1306C;"><i class="fab fa-instagram neon-text-pink"></i></a>
+                <a href="#" class="text-3xl text-gray-400 hover:text-blue-600 transition-colors duration-300"><i class="fab fa-facebook-f neon-text-blue"></i></a>
+                <a href="#" class="text-3xl text-gray-400 hover:text-blue-400 transition-colors duration-300"><i class="fab fa-x-twitter neon-text-pink"></i></a>
+                <a href="#" class="text-3xl text-gray-400 hover:text-black transition-colors duration-300"><i class="fab fa-tiktok neon-text-blue"></i></a>
+                <a href="#" class="text-3xl text-gray-400 hover:text-blue-700 transition-colors duration-300"><i class="fab fa-linkedin-in neon-text-pink"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        // Register ScrollTrigger plugin
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Burger Menu Toggle
+        const burgerMenu = document.getElementById('burger-menu');
+        const overlayNav = document.getElementById('overlay-nav');
+
+        burgerMenu.addEventListener('click', () => {
+            burgerMenu.classList.toggle('active');
+            overlayNav.classList.toggle('open');
+        });
+
+        // Close overlay nav when a link is clicked
+        overlayNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                burgerMenu.classList.remove('active');
+                overlayNav.classList.remove('open');
+            });
+        });
+
+        // GSAP ScrollTrigger Animations
+        function setupAnimations() {
+            // Reusable reveal function
+            function animateFrom(elem, direction) {
+                direction = direction || 1;
+                let x = 0,
+                    y = direction * 100;
+                if (elem.classList.contains("gs_reveal_from_left")) {
+                    x = -100;
+                    y = 0;
+                } else if (elem.classList.contains("gs_reveal_from_right")) {
+                    x = 100;
+                    y = 0;
+                }
+
+                elem.style.transform = "translate(" + x + "px, " + y + "px)";
+                elem.style.opacity = "0";
+                
+                gsap.fromTo(elem, {x: x, y: y, autoAlpha: 0, scale: 0.8}, {
+                    duration: 1.25,
+                    x: 0,
+                    y: 0,
+                    autoAlpha: 1,
+                    scale: 1,
+                    ease: "power3.out",
+                    overwrite: "auto",
+                    stagger: 0.2, // Stagger for multiple elements if needed
+                    scrollTrigger: {
+                        trigger: elem,
+                        start: "top 80%",
+                        end: "bottom top",
+                        toggleActions: "play reverse play reverse",
+                    }
+                });
+            }
+
+            document.querySelectorAll(".gs_reveal").forEach(function(elem) {
+                animateFrom(elem);
+            });
+
+            document.querySelectorAll(".gs_reveal_from_left").forEach(function(elem) {
+                animateFrom(elem, 0); // direction doesn't matter much for explicit x/y
+            });
+
+            document.querySelectorAll(".gs_reveal_from_right").forEach(function(elem) {
+                animateFrom(elem, 0);
+            });
+
+            document.querySelectorAll(".gs_reveal_from_bottom").forEach(function(elem) {
+                animateFrom(elem, 1);
+            });
+
+            // Hero H1 Glitch effect
+            gsap.to(".glitch-effect", {
+                duration: 0.1,
+                x: 5,
+                y: 5,
+                repeat: -1,
+                yoyo: true,
+                ease: "steps(1)",
+                stagger: 0.05,
+                // Ensure it animates on page load
+                onComplete: () => {
+                    gsap.to(".glitch-effect", {
+                        x: 0, y: 0, duration: 0.1, ease: "steps(1)"
+                    });
+                }
+            });
+
+            gsap.from(".glitch-effect", {
+                duration: 1.5,
+                opacity: 0,
+                scale: 0.9,
+                ease: "power3.out",
+                delay: 0.5
+            });
+
+            gsap.from(".neon-text-blue", {
+                duration: 1.5,
+                opacity: 0,
+                y: 20,
+                ease: "power3.out",
+                delay: 0.8
+            });
+
+            gsap.from(".neon-glow-btn", {
+                duration: 1,
+                opacity: 0,
+                y: 30,
+                ease: "power3.out",
+                delay: 1.2,
+                stagger: 0.2
+            });
+
+            // Footer social icons bounce
+            gsap.from("footer .fab", {
+                y: 20,
+                opacity: 0,
+                stagger: 0.1,
+                duration: 0.5,
+                ease: "back.out(1.7)",
+                scrollTrigger: {
+                    trigger: "footer",
+                    start: "top 90%"
+                }
+            });
+        }
+
+        // Initialize animations on load
+        window.addEventListener("load", setupAnimations);
+    </script>
+</body>
+</html>
