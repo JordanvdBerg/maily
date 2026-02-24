@@ -1,0 +1,107 @@
+<style>
+  :root {
+    --primary: #FF69B4; /* hot pink */
+    --secondary: #33CCFF; /* neon blue */
+    --accent: #FFFF00; /* neon yellow */
+    --background: #1a1a1a; /* dark background to make neon colors pop */
+    --text: #ffffff; /* white text */
+  }
+  body {
+    font-family: Arial, sans-serif; /* sans-serif for a futuristic feel */
+    background-color: var(--background);
+    color: var(--text);
+    background-image: radial-gradient(at 50% 50%, var(--background), #2a2a2a);
+  }
+  h1, h2, h3 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* sans-serif for headings */
+    text-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary), 0 0 30px var(--accent);
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .btn {
+    @apply px-8 py-4 uppercase font-black tracking-widest;
+  }
+  .scattered-icon {
+    position: absolute;
+    z-index: -1;
+    filter: blur(3xl);
+    background-color: rgba(var(--primary), 0.2);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  .group-hover\:scale-105\:hover\:scale-105 {
+    transition: transform 0.2s ease-in-out;
+  }
+  .group-hover\:scale-105\:hover\:scale-105:hover {
+    transform: scale(1.05);
+  }
+  .glow-button {
+    transition: box-shadow 0.2s ease-in-out;
+  }
+  .glow-button:hover {
+    box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary), 0 0 30px var(--accent);
+  }
+</style>
+
+<header>
+  <div class="container py-32">
+    <h1 class="text-9xl mb-12">Welcome to SpaceJunkies, Your Cosmic Candy and Costume Hub!</h1>
+    <nav>
+      <ul class="flex justify-between">
+        <li><a href="#" class="btn text-primary glow-button">Explore Our Galactic Shop</a></li>
+        <li><a href="#" class="btn text-secondary glow-button">Dive into Our Sweet Treats</a></li>
+        <li><a href="#" class="btn text-accent glow-button">Get Your Costume Fix Here</a></li>
+      </ul>
+      <div class="scattered-icon absolute top-0 left-0"></div>
+      <div class="scattered-icon absolute bottom-0 right-0"></div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="py-32">
+    <div class="container grid grid-cols-1 md:grid-cols-12 gap-4">
+      <h2 class="md:col-start-2 md:col-span-3 text-7xl mb-12">Out-of-This-World Sweets Awaiting You</h2>
+      <p class="md:col-start-5 md:col-span-5 text-lg mt-[-50px]">Indulge in our vibrant and tasty sweets, carefully crafted to transport your taste buds to a galaxy far, far away. From neon-colored lollipops to glow-in-the-dark gummies, we've got the perfect treats to satisfy your cravings.</p>
+      <img src="sweets_collection.jpg" alt="Colorful sweets and candies on a shelf" class="md:col-start-8 md:col-span-4 aspect-video shadow-[20px_20px_0px_0px_rgba(var(--primary),0.3)] border border-primary group-hover\:scale-105\:hover\:scale-105">
+      <div class="md:col-start-2 md:col-span-2 text-xs uppercase tracking-[0.5em] mt-12">Sweet Treats</div>
+    </div>
+    <div class="scattered-icon absolute top-0 right-0"></div>
+  </section>
+  <section class="py-32">
+    <div class="container grid grid-cols-1 md:grid-cols-12 gap-4">
+      <img src="costume_models.jpg" alt="People modeling different costumes in a neon-lit room" class="md:col-start-2 md:col-span-6 aspect-video shadow-[20px_20px_0px_0px_rgba(var(--primary),0.3)] border border-secondary group-hover\:scale-105\:hover\:scale-105 mb-[-50px]">
+      <h2 class="md:col-start-8 md:col-span-4 text-7xl mb-12">Unleash Your Inner Space Traveler with Our Costumes</h2>
+      <p class="md:col-start-2 md:col-span-5 text-lg">Step into the cosmos with our futuristic and fantastical costumes, designed to make you shine like a star. Whether you're heading to a party or just want to elevate your everyday look, our costumes are the perfect choice.</p>
+      <div class="md:col-start-8 md:col-span-2 text-xs uppercase tracking-[0.5em] mt-12">Costume Shop</div>
+    </div>
+    <div class="scattered-icon absolute bottom-0 left-0"></div>
+  </section>
+</main>
+
+<aside class="py-32">
+  <div class="container grid grid-cols-1 md:grid-cols-12 gap-4">
+    <h3 class="md:col-start-2 md:col-span-8 text-6xl mb-12">Stay Connected with SpaceJunkies</h3>
+    <div class="md:col-start-2 md:col-span-3 bg-slate-900 p-4 rounded">
+      <p class="text-lg">Monday to Friday: 10 AM - 6 PM</p>
+    </div>
+    <div class="md:col-start-5 md:col-span-3 bg-slate-900 p-4 rounded">
+      <p class="text-lg">Get in Touch: <a href="mailto:info@spacejunkies.com" class="text-accent">info@spacejunkies.com</a></p>
+    </div>
+    <div class="md:col-start-8 md:col-span-3 bg-slate-900 p-4 rounded">
+      <p class="text-lg">Call Us: <a href="tel:555-555-5555" class="text-primary">555-555-5555</a></p>
+    </div>
+  </div>
+</aside>
+
+<footer class="py-32">
+  <div class="container">
+    <p>Copyright 2024 SpaceJunkies. All Rights Reserved.</p>
+    <p>Join the SpaceJunkies community today and get ready to blast off into a world of sweetness and style.</p>
+    <p>Website designed with love by SpaceJunkies. Powered by e-commerce magic.</p>
+  </div>
+</footer>
