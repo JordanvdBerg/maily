@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpaceJunkies</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #FFF;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .asymmetric-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-gap: 10px;
+        }
+        .asymmetric-grid > * {
+            grid-column: span 12;
+        }
+        .asymmetric-grid > .wide {
+            grid-column: span 8;
+        }
+        .asymmetric-grid > .narrow {
+            grid-column: span 4;
+        }
+        .hot-pink {
+            background-color: #FF69B4;
+        }
+        .neon-blue {
+            background-color: #33CCFF;
+        }
+        .neon-yellow {
+            background-color: #FFFF00;
+        }
+    </style>
+</head>
+<body>
+    <header class="asymmetric-grid">
+        <nav class="wide hot-pink">
+            <ul>
+                <li><a href="#">[TEXT_HERE]</a></li>
+                <li><a href="#">[TEXT_HERE]</a></li>
+                <li><a href="#">[TEXT_HERE]</a></li>
+            </ul>
+        </nav>
+        <div class="narrow neon-blue">
+            <h1>SpaceJunkies</h1>
+        </div>
+    </header>
+    <main class="asymmetric-grid">
+        <section class="wide neon-yellow">
+            <h2>[TEXT_HERE]</h2>
+            <p>[TEXT_HERE]</p>
+            <ul>
+                <li>[TEXT_HERE]</li>
+                <li>[TEXT_HERE]</li>
+                <li>[TEXT_HERE]</li>
+            </ul>
+        </section>
+        <section class="narrow hot-pink">
+            <h3>[TEXT_HERE]</h3>
+            <p>[TEXT_HERE]</p>
+        </section>
+        <section class="wide neon-blue">
+            <h2>[TEXT_HERE]</h2>
+            <p>[TEXT_HERE]</p>
+            <img src="[IMAGE_HERE]" alt="[TEXT_HERE]">
+        </section>
+        <section class="narrow neon-yellow">
+            <h3>[TEXT_HERE]</h3>
+            <p>[TEXT_HERE]</p>
+        </section>
+        <section class="wide hot-pink">
+            <h2>[TEXT_HERE]</h2>
+            <p>[TEXT_HERE]</p>
+            <ul>
+                <li>[TEXT_HERE]</li>
+                <li>[TEXT_HERE]</li>
+                <li>[TEXT_HERE]</li>
+            </ul>
+        </section>
+    </main>
+    <footer class="asymmetric-grid">
+        <div class="wide neon-blue">
+            <p>&copy; [TEXT_HERE] SpaceJunkies</p>
+            <p>[TEXT_HERE]</p>
+        </div>
+        <div class="narrow hot-pink">
+            <p>[TEXT_HERE]</p>
+            <p>[TEXT_HERE]</p>
+        </div>
+    </footer>
+</body>
+</html>
