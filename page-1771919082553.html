@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <title>SpaceJunkies</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --primary-color: #FF69B4;
+      --secondary-color: #33CC33;
+      --accent-color: #66CCCC;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #050505;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    h1, h2, h3 {
+      color: var(--primary-color);
+    }
+    button {
+      background-color: var(--primary-color);
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: var(--secondary-color);
+    }
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+    a:hover {
+      color: var(--primary-color);
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+    }
+    nav ul li {
+      margin-right: 20px;
+    }
+    nav a {
+      font-size: 18px;
+    }
+    #hero {
+      background-image: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+      padding: 100px 0;
+      text-align: center;
+    }
+    #hero h1 {
+      font-size: 36px;
+    }
+    #hero p {
+      font-size: 18px;
+      color: #fff;
+    }
+    #products {
+      padding: 50px 0;
+    }
+    #products ul {
+      list-style: none;
+    }
+    #products li {
+      margin-bottom: 20px;
+    }
+    #products img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    #products h3 {
+      font-size: 18px;
+    }
+    #online-shopping, #business-hours, #contact {
+      padding: 50px 0;
+      text-align: center;
+    }
+    footer {
+      background-color: var(--primary-color);
+      padding: 20px 0;
+      text-align: center;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Shop</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section id="hero">
+      <div class="container">
+        <h1>BLAST OFF INTO A WORLD OF PURE IMAGINATION!</h1>
+        <p>Get ready to level up your snack game and costume collection with the most EPIC sweets and outfits in the galaxy!</p>
+        <button>EXPLORE THE SPACEJUNKIES UNIVERSE NOW!</button>
+      </div>
+    </section>
+    <section id="products">
+      <div class="container">
+        <h2>Product Catalog</h2>
+        <ul>
+          <li>
+            <img src="image1.jpg" alt="Neon glowing space candy">
+            <h3>GALACTIC GUMMY WORMS</h3>
+            <p>Indulge in our out-of-this-world gummy worms, infused with cosmic flavors that will take you on an intergalactic adventure!</p>
+            <button>ADD TO CART</button>
+          </li>
+          <li>
+            <img src="image2.jpg" alt="Futuristic LED costume">
+            <h3>NEON DREAMCATCHER COSTUME</h3>
+            <p>Elevate your style with our mesmerizing LED costume, designed to make you shine like a superstar in the SpaceJunkies universe!</p>
+            <button>GET READY TO SHINE</button>
+          </li>
+          <li>
+            <img src="image3.jpg" alt="Colorful space-themed lollipops">
+            <h3>COSMIC LOLLIPOPS</h3>
+            <p>Treat yourself to our vibrant, out-of-this-world lollipops, guaranteed to transport your taste buds to a world of pure bliss!</p>
+            <button>TAKE A TRIP TO LOLLIPOP LAND</button>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section id="online-shopping">
+      <div class="container">
+        <h2>Online Shopping</h2>
+        <p>Shop 'til you drop, 24/7, and get ready to receive your SpaceJunkies goodies at your doorstep - it's as easy as 1, 2, BLAST OFF!</p>
+        <button>START SHOPPING NOW</button>
+      </div>
+    </section>
+    <section id="business-hours">
+      <div class="container">
+        <h2>Business Hours</h2>
+        <p>Monday to Friday: 10 AM - 18 PM - swing by and experience the SpaceJunkies magic in person!</p>
+      </div>
+    </section>
+    <section id="contact">
+      <div class="container">
+        <h2>Contact Information</h2>
+        <p>Want to stay in touch and get the latest updates from the SpaceJunkies crew? Follow us on social media or drop us a message - we can't wait to hear from you!</p>
+        <button>GET IN TOUCH WITH US</button>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 SpaceJunkies</p>
+      <ul>
+        <li><a href="#">Terms and Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>
