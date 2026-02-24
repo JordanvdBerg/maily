@@ -1,0 +1,134 @@
+<style>
+  :root {
+    --primary: #FF69B4; 
+    --secondary: #33CCFF; 
+    --accent: #FFFF00; 
+    --background: #1a1a1a; 
+    --text: #ffffff; 
+  }
+  body {
+    font-family: Arial, sans-serif; 
+    background-color: var(--background);
+    color: var(--text);
+    background-image: radial-gradient(at 50% 50%, var(--background), #2a2a2a);
+  }
+  h1, h2, h3 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    text-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary), 0 0 30px var(--accent);
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .info-card {
+    backdrop-blur-md bg-white/5 border border-white/10 p-8 rounded-2xl;
+  }
+  .info-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .info-card li {
+    margin-bottom: 1rem;
+  }
+  .scattered-icon {
+    position: absolute;
+    bg-gradient-to-r from-primary/20 to-secondary/20 blur-[120px] rounded-full;
+    width: 100px;
+    height: 100px;
+  }
+  .bento-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+  .bento-box {
+    background-color: #2a2a2a;
+    padding: 1rem;
+    border: 1px solid #3a3a3a;
+    border-radius: 0.5rem;
+    transition: transform 0.2s ease;
+  }
+  .bento-box:hover {
+    transform: translateY(-1px);
+  }
+  a {
+    transition: color 0.2s ease;
+  }
+  a:hover {
+    color: var(--primary);
+  }
+  button {
+    transition: background-color 0.2s ease;
+  }
+  button:hover {
+    background-color: var(--secondary);
+  }
+</style>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SpaceJunkies</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  </head>
+  <body>
+    <header>
+      <div class="container py-12">
+        <h1 class="text-9xl mb-12 leading-none tracking-tighter">Welcome to SpaceJunkies, Your Cosmic Candy and Costume Hub!</h1>
+        <nav>
+          <ul class="flex justify-between">
+            <li><a href="#" class="text-[10px] uppercase tracking-[0.4em]">Explore Our Galactic Shop</a></li>
+            <li><a href="#" class="text-[10px] uppercase tracking-[0.4em]">Dive into Our Sweet Treats</a></li>
+            <li><a href="#" class="text-[10px] uppercase tracking-[0.4em]">Get Your Costume Fix Here</a></li>
+          </ul>
+        </nav>
+        <div class="scattered-icon absolute top-0 left-0"></div>
+        <div class="scattered-icon absolute bottom-0 right-0"></div>
+      </div>
+    </header>
+    <main>
+      <section class="py-12">
+        <div class="container grid grid-cols-1 md:grid-cols-12 gap-4">
+          <h2 class="md:col-start-2 md:col-span-5 text-8xl mb-12 leading-none tracking-tighter">Experience the Cosmic World of Sweets</h2>
+          <p class="md:col-start-7 md:col-span-5 text-lg">Immerse yourself in our vibrant and tasty sweets, carefully crafted to transport your taste buds to a galaxy far, far away.</p>
+          <img src="https://source.unsplash.com/800x600/?candy,sweets" alt="Colorful sweets and candies on a shelf" class="md:col-start-2 md:col-span-7 aspect-video -mb-20 shadow-[20px_20px_0px_0px_rgba(var(--primary),0.3)] border border-primary">
+        </div>
+      </section>
+      <section class="py-12">
+        <div class="container grid grid-cols-1 md:grid-cols-12 gap-4">
+          <h2 class="md:col-start-7 md:col-span-5 text-8xl mb-12 leading-none tracking-tighter">Unleash Your Inner Space Traveler with Our Costumes</h2>
+          <img src="https://source.unsplash.com/800x600/?costume,space" alt="People modeling different costumes in a neon-lit room" class="md:col-start-2 md:col-span-7 aspect-video -mb-20 shadow-[20px_20px_0px_0px_rgba(var(--secondary),0.3)] border border-secondary">
+          <p class="md:col-start-2 md:col-span-5 text-lg">Step into the cosmos with our futuristic and fantastical costumes, designed to make you shine like a star.</p>
+        </div>
+      </section>
+    </main>
+    <aside class="py-12">
+      <div class="container grid grid-cols-1 md:grid-cols-12 gap-4">
+        <h3 class="md:col-span-12 text-7xl mb-12 leading-none tracking-tighter">Stay Connected with SpaceJunkies</h3>
+        <div class="info-card md:col-start-2 md:col-span-5">
+          <p>Follow us on social media or sign up for our newsletter to get the inside scoop on all things SpaceJunkies.</p>
+        </div>
+        <div class="bento-grid md:col-start-7 md:col-span-5">
+          <div class="bento-box">
+            <p>Monday to Friday: 10 AM - 6 PM</p>
+          </div>
+          <div class="bento-box">
+            <p>Get in Touch: <a href="mailto:info@spacejunkies.com" class="text-accent">info@spacejunkies.com</a></p>
+          </div>
+          <div class="bento-box">
+            <p>Call Us: <a href="tel:555-555-5555" class="text-primary">555-555-5555</a></p>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <footer class="py-12">
+      <div class="container">
+        <p>Copyright 2024 SpaceJunkies. All Rights Reserved.</p>
+        <p>Join the SpaceJunkies community today and get ready to blast off into a world of sweetness and style.</p>
+        <p>Website designed with love by SpaceJunkies. Powered by e-commerce magic.</p>
+      </div>
+    </footer>
+  </body>
+</html>
