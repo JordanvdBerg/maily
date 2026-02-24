@@ -1,0 +1,73 @@
+<!-- Experimental -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SpaceJunkies</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+      :root {
+        --primary: #FF69B4; 
+        --secondary: #33CCFF; 
+        --accent: #FFFF00; 
+        --background: #1a1a1a; 
+        --text: #ffffff; 
+      }
+    </style>
+  </head>
+  <body class="bg-[var(--background)] text-[var(--text)]">
+    <header class="bg-[var(--background)] py-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-6xl font-bold text-[var(--primary)]">SpaceJunkies</h1>
+        <nav>
+          <ul class="flex items-center space-x-4">
+            <li><a href="#" class="text-2xl text-[var(--primary)] hover:text-[var(--secondary)] transition-all duration-300">Explore Our Galactic Shop</a></li>
+            <li><a href="#" class="text-2xl text-[var(--secondary)] hover:text-[var(--accent)] transition-all duration-300">Dive into Our Sweet Treats</a></li>
+            <li><a href="#" class="text-2xl text-[var(--accent)] hover:text-[var(--primary)] transition-all duration-300">Get Your Costume Fix Here</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="py-24">
+        <div class="container mx-auto">
+          <h2 class="text-5xl font-bold text-[var(--primary)] mb-4">Out-of-This-World Sweets Awaiting You</h2>
+          <p class="text-xl text-[var(--text)] mb-8">Indulge in our vibrant and tasty sweets, carefully crafted to transport your taste buds to a galaxy far, far away. From neon-colored lollipops to glow-in-the-dark gummies, we've got the perfect treats to satisfy your cravings.</p>
+          <img src="sweets_collection.jpg" alt="Colorful sweets and candies on a shelf" class="border border-[var(--primary)] w-full md:w-1/2 lg:w-1/3 mx-auto mb-8">
+        </div>
+      </section>
+      <section class="py-24">
+        <div class="container mx-auto">
+          <h2 class="text-5xl font-bold text-[var(--secondary)] mb-4">Unleash Your Inner Space Traveler with Our Costumes</h2>
+          <p class="text-xl text-[var(--text)] mb-8">Step into the cosmos with our futuristic and fantastical costumes, designed to make you shine like a star. Whether you're heading to a party or just want to elevate your everyday look, our costumes are the perfect choice.</p>
+          <img src="costume_models.jpg" alt="People modeling different costumes in a neon-lit room" class="border border-[var(--secondary)] w-full md:w-1/2 lg:w-1/3 mx-auto mb-8">
+        </div>
+      </section>
+    </main>
+    <aside class="py-12">
+      <div class="container mx-auto">
+        <h3 class="text-4xl font-bold text-[var(--accent)] mb-4">Stay Connected with SpaceJunkies</h3>
+        <p class="text-xl text-[var(--text)] mb-8">Want to stay up-to-date on our latest products, promotions, and events? Follow us on social media or sign up for our newsletter to get the inside scoop on all things SpaceJunkies.</p>
+        <ul class="flex flex-col space-y-4 mb-8">
+          <li>Monday to Friday: 10 AM - 6 PM</li>
+          <li>Get in Touch: <a href="mailto:info@spacejunkies.com" class="text-2xl text-[var(--accent)] hover:text-[var(--primary)] transition-all duration-300">info@spacejunkies.com</a></li>
+          <li>Call Us: <a href="tel:555-555-5555" class="text-2xl text-[var(--primary)] hover:text-[var(--secondary)] transition-all duration-300">555-555-5555</a></li>
+        </ul>
+      </div>
+    </aside>
+    <footer class="py-12 bg-[var(--background)]">
+      <div class="container mx-auto flex flex-col items-center space-y-4">
+        <p class="text-xl text-[var(--text)]">Copyright 2024 SpaceJunkies. All Rights Reserved.</p>
+        <p class="text-xl text-[var(--text)]">Join the SpaceJunkies community today and get ready to blast off into a world of sweetness and style.</p>
+        <p class="text-xl text-[var(--text)]">Website designed with love by SpaceJunkies. Powered by e-commerce magic.</p>
+        <ul class="flex space-x-4">
+          <li><a href="#" class="text-2xl text-[var(--primary)] hover:text-[var(--secondary)] transition-all duration-300"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+          <li><a href="#" class="text-2xl text-[var(--secondary)] hover:text-[var(--accent)] transition-all duration-300"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+          <li><a href="#" class="text-2xl text-[var(--accent)] hover:text-[var(--primary)] transition-all duration-300"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+          <li><a href="#" class="text-2xl text-[var(--primary)] hover:text-[var(--secondary)] transition-all duration-300"><i class="fa fa-tiktok" aria-hidden="true"></i></a></li>
+          <li><a href="#" class="text-2xl text-[var(--secondary)] hover:text-[var(--accent)] transition-all duration-300"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>
