@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SpaceJunkies</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+  <style>
+    :root {
+      --primary-color: #FF69B4;
+      --secondary-color: #33CC33;
+      --accent-color: #66CCCC;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #050505;
+      font-family: 'Orbitron', sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <header class="sticky top-0 bg-[#050505] py-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <nav class="flex space-x-4">
+        <a href="#" class="text-[#66CCCC] hover:text-[#FF69B4] transition duration-300">Home</a>
+        <a href="#" class="text-[#66CCCC] hover:text-[#FF69B4] transition duration-300">Shop</a>
+        <a href="#" class="text-[#66CCCC] hover:text-[#FF69B4] transition duration-300">About</a>
+        <a href="#" class="text-[#66CCCC] hover:text-[#FF69B4] transition duration-300">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section id="hero" class="bg-[#050505] py-32">
+      <div class="container mx-auto px-6 max-w-6xl text-center">
+        <h1 class="text-5xl text-[#66CCCC] mb-4">BLAST OFF INTO A WORLD OF PURE IMAGINATION!</h1>
+        <p class="text-2xl text-[#66CCCC] mb-8">Get ready to level up your snack game and costume collection with the most EPIC sweets and outfits in the galaxy!</p>
+        <button class="bg-[#33CC33] hover:bg-[#FF69B4] transition duration-300 text-[#000] py-4 px-8 rounded-lg">EXPLORE THE SPACEJUNKIES UNIVERSE NOW!</button>
+      </div>
+    </section>
+    <section id="products" class="bg-[#0a0a0a] py-32">
+      <div class="container mx-auto px-6 max-w-6xl">
+        <h2 class="text-4xl text-[#FF69B4] mb-12">Product Catalog</h2>
+        <ul class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <li class="bg-[#111] bg-opacity-10 backdrop-blur border border-white/10 p-8 rounded-lg">
+            <img src="image1.jpg" alt="Neon glowing space candy" class="w-32 h-32 object-cover mb-4">
+            <h3 class="text-2xl text-[#FF69B4] mb-2">GALACTIC GUMMY WORMS</h3>
+            <p class="text-lg text-[#66CCCC] mb-4">Indulge in our out-of-this-world gummy worms, infused with cosmic flavors that will take you on an intergalactic adventure!</p>
+            <button class="bg-[#33CC33] hover:bg-[#FF69B4] transition duration-300 text-[#000] py-2 px-4 rounded-lg">ADD TO CART</button>
+          </li>
+          <li class="bg-[#111] bg-opacity-10 backdrop-blur border border-white/10 p-8 rounded-lg">
+            <img src="image2.jpg" alt="Futuristic LED costume" class="w-32 h-32 object-cover mb-4">
+            <h3 class="text-2xl text-[#FF69B4] mb-2">NEON DREAMCATCHER COSTUME</h3>
+            <p class="text-lg text-[#66CCCC] mb-4">Elevate your style with our mesmerizing LED costume, designed to make you shine like a superstar in the SpaceJunkies universe!</p>
+            <button class="bg-[#33CC33] hover:bg-[#FF69B4] transition duration-300 text-[#000] py-2 px-4 rounded-lg">GET READY TO SHINE</button>
+          </li>
+          <li class="bg-[#111] bg-opacity-10 backdrop-blur border border-white/10 p-8 rounded-lg">
+            <img src="image3.jpg" alt="Colorful space-themed lollipops" class="w-32 h-32 object-cover mb-4">
+            <h3 class="text-2xl text-[#FF69B4] mb-2">COSMIC LOLLIPOPS</h3>
+            <p class="text-lg text-[#66CCCC] mb-4">Treat yourself to our vibrant, out-of-this-world lollipops, guaranteed to transport your taste buds to a world of pure bliss!</p>
+            <button class="bg-[#33CC33] hover:bg-[#FF69B4] transition duration-300 text-[#000] py-2 px-4 rounded-lg">TAKE A TRIP TO LOLLIPOP LAND</button>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section id="online-shopping" class="bg-[#050505] py-32">
+      <div class="container mx-auto px-6 max-w-6xl text-center">
+        <h2 class="text-4xl text-[#FF69B4] mb-12">Online Shopping</h2>
+        <p class="text-2xl text-[#66CCCC] mb-8">Shop 'til you drop, 24/7, and get ready to receive your SpaceJunkies goodies at your doorstep - it's as easy as 1, 2, BLAST OFF!</p>
+        <button class="bg-[#33CC33] hover:bg-[#FF69B4] transition duration-300 text-[#000] py-4 px-8 rounded-lg">START SHOPPING NOW</button>
+      </div>
+    </section>
+    <section id="business-hours" class="bg-[#0a0a0a] py-32">
+      <div class="container mx-auto px-6 max-w-6xl text-center">
+        <h2 class="text-4xl text-[#FF69B4] mb-12">Business Hours</h2>
+        <p class="text-2xl text-[#66CCCC] mb-8">Monday to Friday: 10 AM - 18 PM - swing by and experience the SpaceJunkies magic in person!</p>
+      </div>
+    </section>
+    <section id="contact" class="bg-[#050505] py-32">
+      <div class="container mx-auto px-6 max-w-6xl text-center">
+        <h2 class="text-4xl text-[#FF69B4] mb-12">Contact Information</h2>
+        <p class="text-2xl text-[#66CCCC] mb-8">Want to stay in touch and get the latest updates from the SpaceJunkies crew? Follow us on social media or drop us a message - we can't wait to hear from you!</p>
+        <button class="bg-[#33CC33] hover:bg-[#FF69B4] transition duration-300 text-[#000] py-4 px-8 rounded-lg">GET IN TOUCH WITH US</button>
+      </div>
+    </section>
+  </main>
+  <footer class="bg-[#FF69B4] py-8 text-center">
+    <div class="container mx-auto px-6 max-w-6xl">
+      <p class="text-lg text-[#000]">&copy; 2024 SpaceJunkies</p>
+      <ul class="flex space-x-4 justify-center">
+        <li><a href="#" class="text-[#000] hover:text-[#33CC33] transition duration-300">Terms and Conditions</a></li>
+        <li><a href="#" class="text-[#000] hover:text-[#33CC33] transition duration-300">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </footer>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from("#hero h1", { opacity: 0, y: 100, duration: 1.5, delay: 0.5 });
+    gsap.from("#hero p", { opacity: 0, y: 50, duration: 1.5, delay: 1 });
+    gsap.from("#hero button", { opacity: 0, y: 50, duration: 1.5, delay: 1.5 });
+    
+    ScrollTrigger.create({
+      trigger: "#products",
+      start: "top 80%",
+      end: "bottom 20%",
+      toggleClass: "animate",
+      onEnter: () => {
+        gsap.from("#products h2", { opacity: 0, y: 100, duration: 1.5 });
+        gsap.from("#products ul li", {
+          opacity: 0,
+          y: 50,
+          duration: 1.5,
+          stagger: 0.2,
+          delay: 0.5
+        });
+      }
+    });
+    
+    ScrollTrigger.create({
+      trigger: "#online-shopping",
+      start: "top 80%",
+      end: "bottom 20%",
+      toggleClass: "animate",
+      onEnter: () => {
+        gsap.from("#online-shopping h2", { opacity: 0, y: 100, duration: 1.5 });
+        gsap.from("#online-shopping p", { opacity: 0, y: 50, duration: 1.5, delay: 0.5 });
+        gsap.from("#online-shopping button", { opacity: 0, y: 50, duration: 1.5, delay: 1 });
+      }
+    });
+    
+    ScrollTrigger.create({
+      trigger: "#business-hours",
+      start: "top 80%",
+      end: "bottom 20%",
+      toggleClass: "animate",
+      onEnter: () => {
+        gsap.from("#business-hours h2", { opacity: 0, y: 100, duration: 1.5 });
+        gsap.from("#business-hours p", { opacity: 0, y: 50, duration: 1.5, delay: 0.5 });
+      }
+    });
+    
+    ScrollTrigger.create({
+      trigger: "#contact",
+      start: "top 80%",
+      end: "bottom 20%",
+      toggleClass: "animate",
+      onEnter: () => {
+        gsap.from("#contact h2", { opacity: 0, y: 100, duration: 1.5 });
+        gsap.from("#contact p", { opacity: 0, y: 50, duration: 1.5, delay: 0.5 });
+        gsap.from("#contact button", { opacity: 0, y: 50, duration: 1.5, delay: 1 });
+      }
+    });
+  </script>
+</body>
+</html>
