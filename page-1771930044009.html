@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SpaceJunkies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlWTSu1iyUob5vYicnQf6+qKwxu4uE3rtSNk+WyTpeMT5vCRPpg/TmY7xUqmDxEGXbXpftPE9g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+      :root {
+        --primary: #FF69B4; 
+        --secondary: #33CCFF; 
+        --accent: #FFFF00; 
+        --background: #1a1a1a; 
+        --text: #ffffff; 
+      }
+      body {
+        font-family: 'Montserrat', sans-serif; 
+        background-color: var(--background);
+        color: var(--text);
+      }
+      h1, h2, h3 {
+        font-family: 'Montserrat', sans-serif; 
+      }
+    </style>
+  </head>
+  <body class="bg-gradient-to-br from-gray-900 to-gray-800 py-40">
+    <header class="relative">
+      <div class="container mx-auto px-12 flex justify-between items-center py-12">
+        <h1 class="text-7xl font-bold uppercase tracking-tighter leading-none text-[#ffffff]">SpaceJunkies</h1>
+        <nav class="flex justify-end items-center gap-x-12">
+          <a href="#" class="text-2xl font-medium text-[#FF69B4] hover:text-[#ffffff] transition duration-300">Explore Our Galactic Shop</a>
+          <a href="#" class="text-2xl font-medium text-[#33CCFF] hover:text-[#ffffff] transition duration-300">Dive into Our Sweet Treats</a>
+          <a href="#" class="text-2xl font-medium text-[#FFFF00] hover:text-[#ffffff] transition duration-300">Get Your Costume Fix Here</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container mx-auto px-12 flex flex-col gap-y-40 py-40">
+      <section class="flex justify-between items-center gap-x-12">
+        <h2 class="text-5xl font-bold uppercase tracking-tighter leading-none text-[#ffffff] absolute top-[-40px] left-0">Out-of-This-World Sweets Awaiting You</h2>
+        <div class="flex flex-col gap-y-12">
+          <p class="text-2xl font-medium text-[#ffffff]">Indulge in our vibrant and tasty sweets, carefully crafted to transport your taste buds to a galaxy far, far away. From neon-colored lollipops to glow-in-the-dark gummies, we've got the perfect treats to satisfy your cravings.</p>
+          <img src="sweets_collection.jpg" alt="Colorful sweets and candies on a shelf" class="w-[400px] h-[400px] object-cover border border-[#FF69B4] shadow-[20px_20px_0px_0px_rgba(0,0,0,1)]">
+        </div>
+      </section>
+      <section class="flex justify-between items-center gap-x-12">
+        <div class="flex flex-col gap-y-12">
+          <p class="text-2xl font-medium text-[#ffffff]">Step into the cosmos with our futuristic and fantastical costumes, designed to make you shine like a star. Whether you're heading to a party or just want to elevate your everyday look, our costumes are the perfect choice.</p>
+          <img src="costume_models.jpg" alt="People modeling different costumes in a neon-lit room" class="w-[400px] h-[400px] object-cover border border-[#33CCFF] shadow-[20px_20px_0px_0px_rgba(0,0,0,1)]">
+        </div>
+        <h2 class="text-5xl font-bold uppercase tracking-tighter leading-none text-[#ffffff] absolute bottom-[-40px] right-0">Unleash Your Inner Space Traveler with Our Costumes</h2>
+      </section>
+    </main>
+    <aside class="container mx-auto px-12 py-20 bg-opacity-50 backdrop-blur-xl border border-[#ffffff10] rounded-3xl">
+      <h3 class="text-3xl font-medium uppercase tracking-tighter leading-none text-[#ffffff]">Stay Connected with SpaceJunkies</h3>
+      <p class="text-2xl font-medium text-[#ffffff]">Want to stay up-to-date on our latest products, promotions, and events? Follow us on social media or sign up for our newsletter to get the inside scoop on all things SpaceJunkies.</p>
+      <ul class="flex flex-col gap-y-8">
+        <li class="text-2xl font-medium text-[#ffffff]">Monday to Friday: 10 AM - 6 PM</li>
+        <li class="text-2xl font-medium text-[#ffffff]">Get in Touch: <a href="mailto:info@spacejunkies.com" class="text-[#FFFF00] hover:text-[#ffffff] transition duration-300">info@spacejunkies.com</a></li>
+        <li class="text-2xl font-medium text-[#ffffff]">Call Us: <a href="tel:555-555-5555" class="text-[#FF69B4] hover:text-[#ffffff] transition duration-300">555-555-5555</a></li>
+      </ul>
+    </aside>
+    <footer class="fixed bottom-0 left-0 w-full h-40 bg-opacity-50 backdrop-blur-xl border border-[#ffffff10] flex justify-center items-center gap-x-12">
+      <a href="#" class="text-2xl font-medium text-[#ffffff] hover:text-[#FF69B4] transition duration-300"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+      <a href="#" class="text-2xl font-medium text-[#ffffff] hover:text-[#33CCFF] transition duration-300"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+      <a href="#" class="text-2xl font-medium text-[#ffffff] hover:text-[#FFFF00] transition duration-300"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+      <p class="text-2xl font-medium text-[#ffffff]">Copyright 2024 SpaceJunkies. All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>
