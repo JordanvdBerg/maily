@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SpaceJunkies</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --primary-color: #FF69B4;
+      --secondary-color: #33CCFF;
+      --accent-color: #FFFF00;
+    }
+    body {
+      background-color: #050505;
+      font-family: 'Orbitron', sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <header class="bg-[#FF69B4] py-6 sticky top-0 text-center">
+    <div class="container mx-auto px-4">
+      <h1 class="text-[#FFFF00] text-4xl font-black">SpaceJunkies</h1>
+      <nav class="flex justify-center space-x-6 pt-6">
+        <a href="#products" class="text-[#33CCFF] hover:text-[#FF69B4] transition duration-300 text-xl font-bold">Products</a>
+        <a href="#about" class="text-[#33CCFF] hover:text-[#FF69B4] transition duration-300 text-xl font-bold">About</a>
+        <a href="#contact" class="text-[#33CCFF] hover:text-[#FF69B4] transition duration-300 text-xl font-bold">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section id="hero" class="bg-gradient-to-b from-[#FF69B4] to-[#33CCFF] h-screen flex justify-center items-center text-[#FFFF00] py-40">
+      <div class="container mx-auto px-6 max-w-6xl text-center">
+        <h1 class="text-6xl font-black">GET READY TO BLAST OFF INTO A WORLD OF SWEET TOOTH ECSTASY AND COSMIC COUTURE!</h1>
+      </div>
+    </section>
+    <section id="products" class="bg-[#0a0a0a] py-40">
+      <div class="container mx-auto px-6 max-w-6xl">
+        <h2 class="text-[#FFFF00] text-4xl font-black mb-16">Our Products</h2>
+        <p class="text-[#FFFF00] text-2xl">Immerse yourself in a galaxy of gourmet sweets and out-of-this-world costumes that will make your taste buds and senses go supernova! From cosmic candies to stellar attire, we've got the perfect treats to fuel your intergalactic adventures!</p>
+        <div class="flex flex-col space-y-8">
+          <div class="bg-opacity-10 backdrop-blur border border-white/10 p-6 rounded">
+            <h3 class="text-[#FFFF00] text-3xl font-bold mb-4">Glow-in-the-Dark Gummies</h3>
+            <p class="text-[#FFFF00] text-2xl">Experience the magic of our glow-in-the-dark gummies, made with the finest ingredients and a dash of cosmic fun!</p>
+          </div>
+          <div class="bg-opacity-10 backdrop-blur border border-white/10 p-6 rounded">
+            <h3 class="text-[#FFFF00] text-3xl font-bold mb-4">Alien Slime Ice Cream</h3>
+            <p class="text-[#FFFF00] text-2xl">Try our out-of-this-world alien slime ice cream, a sweet and tangy treat that's sure to make your taste buds do the galaxy dance!</p>
+          </div>
+          <div class="bg-opacity-10 backdrop-blur border border-white/10 p-6 rounded">
+            <h3 class="text-[#FFFF00] text-3xl font-bold mb-4">Galaxy Goddess Costumes</h3>
+            <p class="text-[#FFFF00] text-2xl">Feel like a galaxy goddess in our cosmic costumes, designed to make you shine like a star in the night sky!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="about" class="bg-[#050505] py-40 text-[#FF69B4]">
+      <div class="container mx-auto px-6 max-w-6xl">
+        <h2 class="text-4xl font-black mb-16">About Us</h2>
+        <p class="text-2xl">We at SpaceJunkies are passionate about bringing you the most epic sweets and costumes in the universe! Our doors are open from Monday to Friday, 10 AM - 18 PM, so you can get your fix of all things sweet and stylish. Come and experience the cosmic vibe for yourself!</p>
+      </div>
+    </section>
+    <section id="catalog" class="bg-[#0a0a0a] py-40">
+      <div class="container mx-auto px-6 max-w-6xl text-[#FFFF00]">
+        <h2 class="text-4xl font-black mb-16">Product Catalog</h2>
+        <ul class="flex flex-col space-y-8">
+          <li class="bg-opacity-10 backdrop-blur border border-white/10 p-6 rounded">Glow-in-the-Dark Gummies</li>
+          <li class="bg-opacity-10 backdrop-blur border border-white/10 p-6 rounded">Alien Slime Ice Cream</li>
+          <li class="bg-opacity-10 backdrop-blur border border-white/10 p-6 rounded">Galaxy Goddess Costumes</li>
+        </ul>
+      </div>
+    </section>
+    <section id="contact" class="bg-[#050505] py-40 text-[#FFFF00]">
+      <div class="container mx-auto px-6 max-w-6xl">
+        <h2 class="text-4xl font-black mb-16">Get in Touch</h2>
+        <p class="text-2xl">Want to stay updated on our latest cosmic creations and promotions? Follow us on social media or shoot us a message at spacejunkies@galaxy.com. Phone: 555-555-5555. Address: 123 Space Street, Galaxy City.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="bg-[#33CCFF] py-6 text-center text-[#FF69B4]">
+    <div class="container mx-auto px-4">
+      <p class="text-2xl font-bold">&copy; 2024 SpaceJunkies</p>
+    </div>
+  </footer>
+</body>
+</html>
