@@ -1,0 +1,532 @@
+{
+  "parts": [
+    {
+      "text": "```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SpaceJunkies</title>
+  <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">
+  <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>
+  <link href=\"https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Inter:wght@300;400;600;700&display=swap\" rel=\"stylesheet\">
+  <style>
+    /* CSS Variables: Our Cosmic Palette */
+    :root {
+      --primary-color: #08F7FE; /* Neon Blue/Cyan - The energy pulse */
+      --secondary-color: #FF69B4; /* Hot Pink - The playful pop */
+      --accent-color: #FFFF00; /* Bright Yellow - The radiant highlight */
+      --background-color: #1A1D23; /* Dark Grey/Nearly Black - The cosmic void */
+      --text-color: #FFFFFF; /* White - The starlight */
+
+      --font-heading: 'Orbitron', sans-serif; /* Futuristic & Bold */
+      --font-body: 'Inter', sans-serif; /* Clean & Modern for readability */
+    }
+
+    /* Global Styles: Setting the Stage */
+    body {
+      font-family: var(--font-body);
+      color: var(--text-color);
+      /* Subtle radial gradient for atmospheric depth, giving a slight glow from the center */
+      background: radial-gradient(circle at 50% 10%, #2b2e35, var(--background-color) 75%);
+      margin: 0;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      overflow-x: hidden; /* Prevents horizontal scroll from glowing elements extending past viewport */
+    }
+
+    /* Containers: Defining Our Cosmic Boundaries */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Typography: The Voice of SpaceJunkies */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      color: var(--primary-color);
+      margin-top: 0;
+      margin-bottom: 0.5em;
+      text-shadow: 0 0 8px rgba(8, 247, 254, 0.6); /* Default neon glow for headings */
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw + 1rem, 4rem); /* Responsive scale for H1 */
+      color: var(--accent-color); /* H1 stands out with accent yellow */
+      text-shadow: 0 0 10px rgba(255, 255, 0, 0.7); /* Stronger accent glow */
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw + 1rem, 3.5rem); /* Responsive scale for H2 */
+      text-shadow: 0 0 8px rgba(8, 247, 254, 0.6); /* Primary neon glow */
+    }
+
+    h3 {
+      font-size: clamp(1.5rem, 3vw + 1rem, 2.5rem); /* Responsive scale for H3 */
+      color: var(--secondary-color); /* H3 uses secondary pink */
+      text-shadow: 0 0 6px rgba(255, 105, 180, 0.6); /* Secondary neon glow */
+    }
+
+    p {
+      margin-bottom: 1em;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.9); /* Slightly muted for softer contrast */
+    }
+
+    /* Links: Navigating the Galaxy */
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--accent-color);
+      text-shadow: 0 0 5px var(--accent-color);
+    }
+
+    /* Header: The Command Center */
+    header {
+      background-color: rgba(26, 29, 35, 0.8); /* Semi-transparent dark background */
+      backdrop-filter: blur(5px); /* Creates a slick, modern club-like blur effect */
+      padding: 20px 0;
+      border-bottom: 2px solid var(--primary-color);
+      box-shadow: 0 0 15px rgba(8, 247, 254, 0.5); /* Primary neon glow at the bottom */
+      position: sticky;
+      top: 0;
+      z-index: 1000; /* Ensures header stays on top */
+    }
+
+    header nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    header nav ul li a {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-color);
+      padding: 10px 15px;
+      border-radius: 5px;
+      position: relative;
+      overflow: hidden; /* For the hover effect */
+      text-shadow: 0 0 3px var(--text-color); /* Subtle white glow */
+    }
+
+    /* Navigation Hover Effect: A quick cosmic burst */
+    header nav ul li a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(8, 247, 254, 0.2), transparent); /* Light sweep */
+      transition: left 0.5s ease;
+    }
+
+    header nav ul li a:hover::before {
+      left: 100%;
+    }
+
+    header nav ul li a:hover {
+      color: var(--primary-color);
+      text-shadow: 0 0 8px var(--primary-color); /* Intense primary glow on hover */
+    }
+
+    /* Main Content & Section Spacing: Building Our Universe */
+    main {
+      padding-top: 40px;
+    }
+
+    section {
+      padding: 60px 0;
+      margin-bottom: 40px; /* Consistent space between sections */
+      position: relative;
+      background-color: var(--background-color); /* Base for sections */
+      border-radius: 10px;
+      overflow: hidden; /* Ensures shadows and glows are contained */
+      box-shadow: 0 0 30px rgba(0,0,0,0.5); /* Deep shadow for elevation */
+      transition: box-shadow 0.3s ease;
+    }
+
+    /* Alternate Section Styling: Dynamic Visual Flow */
+    section:nth-of-type(odd) {
+      background: linear-gradient(135deg, #2b2e35, var(--background-color) 80%); /* Subtle gradient */
+      border-left: 3px solid var(--secondary-color); /* Secondary color border */
+      box-shadow: 0 0 20px rgba(255, 105, 180, 0.3); /* Secondary glow */
+    }
+
+    section:nth-of-type(even) {
+      background: linear-gradient(45deg, #2b2e35, var(--background-color) 80%); /* Subtle gradient */
+      border-right: 3px solid var(--primary-color); /* Primary color border */
+      box-shadow: 0 0 20px rgba(8, 247, 254, 0.3); /* Primary glow */
+    }
+
+    /* Hero Section: Welcome to the Cosmic Playground */
+    main section:first-of-type { /* Welcome section */
+      text-align: center;
+      padding-bottom: 80px; /* More space for the hero image */
+      background: linear-gradient(180deg, var(--background-color), #2b2e35); /* Top-down gradient */
+      border: none;
+      box-shadow: none; /* No extra shadow here, let the text glow dominate */
+    }
+
+    main section:first-of-type h1 {
+      margin-bottom: 20px;
+    }
+
+    main section:first-of-type p {
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Images: Portals to Other Worlds */
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+      border-radius: 8px;
+      border: 2px solid var(--primary-color);
+      box-shadow: 0 0 15px rgba(8, 247, 254, 0.4); /* Primary glow for images */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    img:hover {
+      transform: scale(1.02); /* Slight scale up on hover */
+      box-shadow: 0 0 25px var(--secondary-color); /* Secondary glow on hover */
+    }
+
+    main section:first-of-type img { /* Hero image specific style */
+      border-color: var(--accent-color);
+      box-shadow: 0 0 20px rgba(255, 255, 0, 0.6); /* Accent glow for hero */
+    }
+
+    /* Articles (Product cards): Our Galactic Wares */
+    article {
+      background-color: #2b2e35;
+      padding: 30px;
+      margin-bottom: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      border-left: 2px solid var(--secondary-color);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    article:hover {
+      transform: translateY(-5px); /* Lift effect on hover */
+      box-shadow: 0 5px 25px rgba(255, 105, 180, 0.5); /* Enhanced secondary glow */
+    }
+
+    article h3 {
+      margin-bottom: 15px;
+    }
+
+    article img {
+      border: 2px solid var(--secondary-color);
+      box-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
+    }
+
+    /* Galactic Gallery: Glimpses of Our Universe */
+    .container > section:nth-of-type(3) ul { /* Target the ul within the 3rd section */
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid for gallery */
+      gap: 20px;
+    }
+
+    .container > section:nth-of-type(3) ul li {
+      background-color: #2b2e35;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      border: 1px solid var(--primary-color);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .container > section:nth-of-type(3) ul li:hover {
+      transform: translateY(-5px) scale(1.01);
+      box-shadow: 0 5px 25px rgba(8, 247, 254, 0.5); /* Primary glow on hover */
+    }
+
+    .container > section:nth-of-type(3) ul li img {
+      margin: 0;
+      border: none;
+      border-radius: 0; /* Gallery images don't need inner border-radius */
+    }
+
+    /* Contact Form: Connect with the Crew */
+    form {
+      display: grid;
+      gap: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 40px;
+      background-color: #2b2e35;
+      border-radius: 10px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.5), 0 0 15px rgba(255, 255, 0, 0.3); /* Accent glow */
+    }
+
+    input[type=\"text\"],
+    input[type=\"email\"],
+    textarea {
+      width: 100%;
+      padding: 15px;
+      background-color: #1A1D23; /* Darker input background */
+      border: 1px solid var(--primary-color);
+      border-radius: 5px;
+      color: var(--text-color);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      box-shadow: inset 0 0 8px rgba(8, 247, 254, 0.2); /* Inner glow for inputs */
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input[type=\"text\"]:focus,
+    input[type=\"email\"]:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent-color);
+      box-shadow: inset 0 0 10px rgba(255, 255, 0, 0.4), 0 0 10px rgba(255, 255, 0, 0.4); /* Accent glow on focus */
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+      font-family: var(--font-body);
+    }
+
+    button {
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); /* Gradient button */
+      color: var(--background-color); /* Dark text on bright button */
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 700;
+      padding: 15px 25px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(8, 247, 254, 0.6); /* Primary glow */
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    button:hover {
+      transform: translateY(-3px); /* Lift effect on hover */
+      box-shadow: 0 5px 25px rgba(255, 105, 180, 0.8), 0 0 30px rgba(8, 247, 254, 0.8); /* Intense mixed glow */
+      background: linear-gradient(45deg, var(--secondary-color), var(--primary-color)); /* Inverted gradient on hover */
+    }
+
+    /* Footer: The Cosmic End Credits */
+    footer {
+      background-color: rgba(26, 29, 35, 0.8);
+      backdrop-filter: blur(5px);
+      padding: 30px 0;
+      text-align: center;
+      border-top: 2px solid var(--secondary-color);
+      box-shadow: 0 0 15px rgba(255, 105, 180, 0.5); /* Secondary glow at the top */
+      margin-top: 60px;
+    }
+
+    footer p {
+      margin-bottom: 15px;
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    footer ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap; /* For smaller screens */
+    }
+
+    footer ul li a {
+      color: var(--text-color);
+      font-size: 0.9rem;
+      opacity: 0.8;
+      text-shadow: none;
+    }
+
+    footer ul li a:hover {
+      color: var(--secondary-color);
+      text-shadow: 0 0 5px var(--secondary-color);
+      opacity: 1;
+    }
+
+    /* Responsive Adjustments: Adapting to All Space Devices */
+    @media (max-width: 768px) {
+      header nav ul {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      header nav ul li a {
+        font-size: 1rem;
+        padding: 8px 12px;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 7vw + 1rem, 3rem);
+      }
+
+      h2 {
+        font-size: clamp(1.8rem, 6vw + 1rem, 2.5rem);
+      }
+
+      h3 {
+        font-size: clamp(1.4rem, 5vw + 1rem, 2rem);
+      }
+
+      section {
+        padding: 40px 0;
+        margin-bottom: 30px;
+      }
+
+      article {
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+      form {
+        padding: 30px;
+      }
+
+      button {
+        font-size: 1.1rem;
+        padding: 12px 20px;
+      }
+
+      footer ul {
+        gap: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 15px;
+      }
+
+      header {
+        padding: 15px 0;
+      }
+
+      header nav ul li a {
+        padding: 5px 10px;
+      }
+
+      h1 {
+        font-size: clamp(1.8rem, 8vw + 1rem, 2.5rem);
+      }
+
+      h2 {
+        font-size: clamp(1.6rem, 7vw + 1rem, 2.2rem);
+      }
+
+      h3 {
+        font-size: clamp(1.2rem, 6vw + 1rem, 1.8rem);
+      }
+
+      section {
+        padding: 30px 0;
+      }
+
+      article {
+        padding: 15px;
+      }
+
+      form {
+        padding: 20px;
+      }
+
+      button {
+        font-size: 1rem;
+        padding: 10px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class=\"container\">
+      <nav>
+        <ul>
+          <li><a href=\"#\">Home</a></li>
+          <li><a href=\"#\">Sweets</a></li>
+          <li><a href=\"#\">Costumes</a></li>
+          <li><a href=\"#\">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class=\"container\">
+      <section>
+        <h1>Welcome to SpaceJunkies: Your Cosmic Playground</h1>
+        <p>Step into our vibrant world where the boundaries of reality are pushed, and the love for sweets and costumes knows no limits. At SpaceJunkies, we're passionate about bringing you the most mouth-watering treats and out-of-this-world costumes that will make your heart skip a beat. Whether you're a fan of futuristic fashion or a sucker for sweet delights, we've got you covered. Our doors are open from Monday to Friday, 10 AM - 18 PM, so come and experience the magic for yourself. Get ready to indulge in a world of pure imagination, where the fun never ends, and the excitement is always palpable.</p>
+        <img src=\"hero-image\" alt=\"A colorful illustration of a futuristic cityscape with neon lights, sweets, and costumes\">
+      </section>
+      <section>
+        <h2>Explore Our Galactic Products</h2>
+        <article>
+          <h3>Sweet Treats from Another World</h3>
+          <p>Our sweets are not just any ordinary treats - they're a culinary journey through the cosmos. From galaxy-themed lollipops to asteroid-shaped chocolates, every bite is a taste sensation that will leave you craving for more. With new and exciting flavors being added all the time, you'll never get bored of our sweet delights. Whether you're in the mood for something classic and comforting or adventurous and bold, our sweets are the perfect companion for any intergalactic adventure. So why wait? Blast off into a world of pure bliss and indulge in our cosmic sweets today!</p>
+          <img src=\"sweets-image\" alt=\"A variety of colorful sweets, including lollipops, chocolates, and candies\">
+        </article>
+        <article>
+          <h3>Costumes that are Out of this World</h3>
+          <p>Unleash your inner space rebel with our range of costumes that are truly astronomical. From futuristic jumpsuits to cosmic accessories, our costumes are designed to make you stand out from the crowd and shine like a star. Whether you're attending a themed party, a music festival, or just want to add some extra flair to your everyday look, our costumes are the perfect choice. With a wide range of styles and sizes to choose from, you're sure to find the perfect costume to match your unique personality and style. So why settle for ordinary when you can be extraordinary? Get ready to make a statement with our cosmic costumes!</p>
+          <img src=\"costumes-image\" alt=\"A model wearing a futuristic costume, with neon lights and cosmic accessories\">
+        </article>
+      </section>
+      <section>
+        <h2>Galactic Gallery</h2>
+        <ul>
+          <li><img src=\"gallery-image1\" alt=\"A photo of a customer wearing a SpaceJunkies costume, with a fun and colorful background\"></li>
+          <li><img src=\"gallery-image2\" alt=\"A picture of a variety of SpaceJunkies sweets, arranged in a creative and visually appealing way\"></li>
+          <li><img src=\"gallery-image3\" alt=\"A snapshot of a SpaceJunkies event, with customers having fun and enjoying the festivities\"></li>
+        </ul>
+      </section>
+      <section>
+        <h2>Get in Touch with Us</h2>
+        <form>
+          <input type=\"text\" placeholder=\"Your Name: Join the SpaceJunkies crew!\">
+          <input type=\"email\" placeholder=\"Your Email: Stay tuned for cosmic updates!\">
+          <textarea placeholder=\"Your Message: Share your thoughts, ask a question, or just say hello!\"></textarea>
+          <button>Send Message: Blast off into the conversation!</button>
+        </form>
+      </section>
+    </div>
+  </main>
+  <footer>
+    <div class=\"container\">
+      <p>&copy; 2024 SpaceJunkies: Where the cosmic adventure never ends!</p>
+      <ul>
+        <li><a href=\"#\">Terms and Conditions: The space rules!</a></li>
+        <li><a href=\"#\">Privacy Policy: We've got your back, space traveler!</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>
+```"
+    }
+  ],
+  "role": "model"
+}
