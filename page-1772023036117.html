@@ -1,0 +1,173 @@
+```html
+<!-- Style System: Modern Editorial with Tailwind 3.x CDN -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpaceJunkies</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --primary: #08F7FE;
+      --primary-rgb: 8, 247, 254;
+      --secondary: #FF69B4;
+      --secondary-rgb: 255, 105, 180;
+      --accent: #FFFF00;
+      --accent-rgb: 255, 255, 0;
+      --background: #1A1D23;
+      --background-rgb: 26, 29, 35;
+      --text: #FFFFFF;
+      --text-rgb: 255, 255, 255;
+      --shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      --glow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--background);
+      background-image: radial-gradient(at 50% 50%, rgba(26, 29, 35, 1), rgba(26, 29, 35, 0.5));
+    }
+
+    h1, h2, h3 {
+      font-family: Arial, sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--primary);
+    }
+
+    h1 {
+      font-size: 6xl;
+      mb-12;
+    }
+
+    h2 {
+      font-size: 5xl;
+      mb-12;
+    }
+
+    h3 {
+      font-size: 4xl;
+      mb-12;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    section {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+
+    .section--bleed {
+      margin-top: -6rem;
+    }
+
+    .offset-left {
+      margin-left: 0;
+    }
+
+    .offset-right {
+      margin-left: auto;
+    }
+
+    img {
+      aspect-video;
+      shadow-[20px_20px_0px_0px_rgba(var(--primary-rgb),0.3)];
+    }
+
+    button {
+      px-8 py-4 uppercase font-black tracking-widest;
+      background-color: var(--primary);
+      color: var(--background);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        max-width: 90%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        max-width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-950">
+  <header>
+    <div class="container">
+      <nav>
+        <ul>
+          <li><a href="#" rel="noopener noreferrer">Home</a></li>
+          <li><a href="#" rel="noopener noreferrer">Sweets</a></li>
+          <li><a href="#" rel="noopener noreferrer">Costumes</a></li>
+          <li><a href="#" rel="noopener noreferrer">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <section class="grid grid-cols-1 md:grid-cols-12">
+        <h1 class="col-span-12 text-8xl mb-12">Welcome to SpaceJunkies: Your Cosmic Playground</h1>
+        <p class="md:col-span-5">Step into our vibrant world where the boundaries of reality are pushed, and the love for sweets and costumes knows no limits. At SpaceJunkies, we're passionate about bringing you the most mouth-watering treats and out-of-this-world costumes that will make your heart skip a beat. Whether you're a fan of futuristic fashion or a sucker for sweet delights, we've got you covered. Our doors are open from Monday to Friday, 10 AM - 18 PM, so come and experience the magic for yourself. Get ready to indulge in a world of pure imagination, where the fun never ends, and the excitement is always palpable.</p>
+        <img class="md:col-span-7" src="hero-image" alt="A colorful illustration of a futuristic cityscape with neon lights, sweets, and costumes">
+      </section>
+      <section class="grid grid-cols-1 md:grid-cols-12">
+        <img class="md:col-span-7" src="sweets-image" alt="A variety of colorful sweets, including lollipops, chocolates, and candies">
+        <article class="md:col-span-5">
+          <h2 class="text-6xl mb-12">Explore Our Galactic Products</h2>
+          <h3 class="text-5xl mb-12">Sweet Treats from Another World</h3>
+          <p>Our sweets are not just any ordinary treats - they're a culinary journey through the cosmos. From galaxy-themed lollipops to asteroid-shaped chocolates, every bite is a taste sensation that will leave you craving for more. With new and exciting flavors being added all the time, you'll never get bored of our sweet delights. Whether you're in the mood for something classic and comforting or adventurous and bold, our sweets are the perfect companion for any intergalactic adventure. So why wait? Blast off into a world of pure bliss and indulge in our cosmic sweets today!</p>
+        </article>
+      </section>
+      <section class="grid grid-cols-1 md:grid-cols-12">
+        <article class="md:col-span-5">
+          <h2 class="text-6xl mb-12">Costumes that are Out of this World</h2>
+          <p>Unleash your inner space rebel with our range of costumes that are truly astronomical. From futuristic jumpsuits to cosmic accessories, our costumes are designed to make you stand out from the crowd and shine like a star. Whether you're attending a themed party, a music festival, or just want to add some extra flair to your everyday look, our costumes are the perfect choice. With a wide range of styles and sizes to choose from, you're sure to find the perfect costume to match your unique personality and style. So why settle for ordinary when you can be extraordinary? Get ready to make a statement with our cosmic costumes!</p>
+        </article>
+        <img class="md:col-span-7" src="costumes-image" alt="A model wearing a futuristic costume, with neon lights and cosmic accessories">
+      </section>
+      <section class="grid grid-cols-1 md:grid-cols-12">
+        <h2 class="col-span-12 text-6xl mb-12">Galactic Gallery</h2>
+        <ul class="md:col-span-12 flex flex-wrap justify-center">
+          <li class="md:w-1/3"><img src="gallery-image1" alt="A photo of a customer wearing a SpaceJunkies costume, with a fun and colorful background"></li>
+          <li class="md:w-1/3"><img src="gallery-image2" alt="A picture of a variety of SpaceJunkies sweets, arranged in a creative and visually appealing way"></li>
+          <li class="md:w-1/3"><img src="gallery-image3" alt="A snapshot of a SpaceJunkies event, with customers having fun and enjoying the festivities"></li>
+        </ul>
+      </section>
+      <section class="grid grid-cols-1 md:grid-cols-12">
+        <h2 class="col-span-12 text-6xl mb-12">Get in Touch with Us</h2>
+        <form class="md:col-span-12">
+          <input type="text" placeholder="Your Name: Join the SpaceJunkies crew!" class="block w-full mb-4">
+          <input type="email" placeholder="Your Email: Stay tuned for cosmic updates!" class="block w-full mb-4">
+          <textarea placeholder="Your Message: Share your thoughts, ask a question, or just say hello!" class="block w-full mb-4"></textarea>
+          <button>Send Message: Blast off into the conversation!</button>
+        </form>
+      </section>
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 SpaceJunkies: Where the cosmic adventure never ends!</p>
+      <ul>
+        <li><a href="#" rel="noopener noreferrer">Terms and Conditions: The space rules!</a></li>
+        <li><a href="#" rel="noopener noreferrer">Privacy Policy: We've got your back, space traveler!</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>
+```
