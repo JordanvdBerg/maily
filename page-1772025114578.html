@@ -1,0 +1,422 @@
+{
+  "parts": [
+    {
+      "text": "```html
+<!DOCTYPE html>
+<html lang=\"en\">
+<head>
+  <meta charset=\"UTF-8\">
+  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+  <title>SpaceJunkies: Your Cosmic Candyland & Futuristic Fashion Hub</title>
+  <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">
+  <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>
+  <link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Orbitron:wght@400;700;900&display=swap\" rel=\"stylesheet\">
+  <script src=\"https://cdn.tailwindcss.com\"></script>
+  <style>
+    /* CSS Variables based on client brief */
+    :root {
+      --primary: #08F7FE;
+      --primary-rgb: 8, 247, 254;
+      --secondary: #FE53BB;
+      --secondary-rgb: 254, 83, 187;
+      --accent: #F7DC6F;
+      --accent-rgb: 247, 220, 111;
+      --background: #1A1D23;
+      --text: #FFFFFF;
+      --dark-background: #101216; /* A slightly darker shade for gradients */
+    }
+
+    /* Basic Reset & Body Styling */
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden; /* Prevent horizontal scroll from rotated elements */
+    }
+
+    /* Headings Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.05em; /* Tighter for futuristic feel */
+      text-shadow: 0 0 10px rgba(var(--primary-rgb), 0.5), 0 0 20px rgba(var(--secondary-rgb), 0.3); /* Subtle neon glow base */
+    }
+
+    /* Responsive Heading Sizes using clamp() */
+    h1 { font-size: clamp(3rem, 7vw + 1rem, 5.5rem); }
+    h2 { font-size: clamp(2.5rem, 6vw + 1rem, 4.5rem); }
+    h3 { font-size: clamp(2rem, 5vw + 1rem, 3.5rem); }
+    h4 { font-size: clamp(1.75rem, 4vw + 1rem, 2.5rem); }
+
+    /* Custom Container Styling */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      position: relative; /* For z-index and overlaps */
+      z-index: 1; /* Default layer */
+    }
+
+    /* Neon Text Shadow for specific elements - overiding default hX */
+    .text-neon-primary {
+        text-shadow: 0 0 8px var(--primary), 0 0 15px rgba(var(--primary-rgb), 0.6);
+    }
+    .text-neon-secondary {
+        text-shadow: 0 0 8px var(--secondary), 0 0 15px rgba(var(--secondary-rgb), 0.6);
+    }
+    .text-neon-accent {
+        text-shadow: 0 0 8px var(--accent), 0 0 15px rgba(var(--accent-rgb), 0.6);
+    }
+    /* No shadow for the main brand name in header to make it pop */
+    .brand-logo-shadow-off {
+        text-shadow: none !important;
+    }
+
+    /* Button Styling */
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--background);
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.7);
+      border: none; /* Ensure no default button border */
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      background-color: var(--secondary);
+      color: var(--text);
+      box-shadow: 0 0 25px rgba(var(--secondary-rgb), 1);
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    /* Input/Textarea Styling */
+    input[type=\"email\"],
+    input[type=\"text\"],
+    textarea {
+      background-color: rgba(var(--primary-rgb), 0.1);
+      border: 1px solid rgba(var(--primary-rgb), 0.3);
+      padding: 1rem;
+      color: var(--text);
+      width: 100%;
+      border-radius: 8px;
+      transition: all 0.3s ease-in-out;
+      appearance: none; /* Reset OS native styling */
+    }
+    input[type=\"email\"]::placeholder,
+    input[type=\"text\"]::placeholder,
+    textarea::placeholder {
+      color: rgba(var(--text-rgb), 0.6);
+    }
+    input[type=\"email\"]:focus,
+    input[type=\"text\"]:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.5);
+    }
+
+    /* Custom shadow for images and hover effects */
+    .img-shadow-primary {
+      box-shadow: 20px 20px 0px 0px rgba(var(--primary-rgb), 0.3);
+      transition: all 0.3s ease-in-out;
+    }
+    .img-shadow-primary:hover {
+        box-shadow: 15px 15px 0px 0px rgba(var(--secondary-rgb), 0.5);
+        transform: translate(-5px, -5px);
+    }
+    .img-shadow-secondary {
+      box-shadow: 20px 20px 0px 0px rgba(var(--secondary-rgb), 0.3);
+      transition: all 0.3s ease-in-out;
+    }
+    .img-shadow-secondary:hover {
+        box-shadow: 15px 15px 0px 0px rgba(var(--primary-rgb), 0.5);
+        transform: translate(-5px, -5px);
+    }
+
+    /* Nav links hover with underline micro-interaction */
+    nav ul li a {
+      position: relative;
+      padding-bottom: 5px;
+      transition: color 0.3s ease-in-out;
+    }
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease-in-out;
+    }
+    nav ul li a:hover {
+      color: var(--primary);
+    }
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    /* Footer Social Links hover effect */
+    footer ul li a {
+        transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+    }
+    footer ul li a:hover {
+        color: var(--primary);
+        text-shadow: 0 0 8px var(--primary);
+    }
+
+    /* Section bleed effects using negative margins and z-index for visual overlap */
+    .section-bleed-top {
+        margin-top: -100px; /* Overlap with the section above */
+        padding-top: 100px; /* To prevent content from being cut off */
+        position: relative;
+        z-index: 2; /* Ensure this section sits above the one it overlaps */
+    }
+    .section-bleed-bottom {
+        margin-bottom: -100px; /* Overlap with the section below */
+        padding-bottom: 100px; /* To prevent content from being cut off */
+        position: relative;
+        z-index: 2; /* Ensure this section sits above the one it overlaps */
+    }
+
+    /* Configure Tailwind to use CSS variables for colors and fonts */
+    html {
+      --tw-primary: var(--primary);
+      --tw-secondary: var(--secondary);
+      --tw-accent: var(--accent);
+      --tw-background: var(--background);
+      --tw-text: var(--text);
+    }
+    [x-cloak] { display: none !important; }
+
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: 'var(--primary)',
+            secondary: 'var(--secondary)',
+            accent: 'var(--accent)',
+            background: 'var(--background)',
+            text: 'var(--text)',
+          },
+          fontFamily: {
+            inter: ['Inter', 'sans-serif'],
+            orbitron: ['Orbitron', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+</head>
+<body class=\"bg-background text-text\">
+
+  <!-- Header Section -->
+  <div class=\"container relative z-20 py-6\">
+    <header class=\"flex flex-col md:flex-row justify-between items-center gap-4\">
+      <h1 class=\"text-3xl font-orbitron font-black text-primary brand-logo-shadow-off\">
+          <a href=\"#\" class=\"block hover:text-secondary transition-colors duration-300\">SPACEJUNKIES</a>
+      </h1>
+      <nav class=\"md:block\">
+        <ul class=\"flex flex-wrap justify-center space-x-6 sm:space-x-8 uppercase font-bold tracking-wider text-lg\">
+          <li><a href=\"#\">Home</a></li>
+          <li><a href=\"#\">Sweets</a></li>
+          <li><a href=\"#\">Costumes</a></li>
+          <li><a href=\"#\">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+
+  <!-- Hero Section -->
+  <div class=\"container py-20 lg:py-32 relative z-10 section-bleed-bottom\">
+    <main>
+      <section class=\"grid grid-cols-12 gap-10 md:gap-16 items-center\">
+        <div class=\"col-span-12 md:col-span-5 md:col-start-1 order-2 md:order-1\">
+          <h1 class=\"text-neon-primary mb-6 lg:mb-10 uppercase font-orbitron font-black leading-tight\">
+            Welcome to SpaceJunkies: Your Cosmic Candyland
+          </h1>
+          <p class=\"text-lg leading-relaxed mb-8\">
+            Get ready to blast off into an electrifying universe where vibrant sweets collide with out-of-this-world costumes! At SpaceJunkies, we are the architects of your intergalactic adventures, passionately crafting the most epic treats and attire to fuel your journey across the cosmos. Our doors are open Monday to Friday, from <span class=\"text-primary font-bold\">10 AM to 6 PM</span>, offering a portal to a dimension of pure imagination. From neon-lit lollipops that twinkle like distant stars to galaxy-inspired getups that make you shine brighter than a supernova, we've got everything you need to make your space travels a little sweeter and a lot more stylish. Prepare for an experience that's truly out of this world!
+          </p>
+          <button class=\"btn-primary px-8 py-4 uppercase font-black tracking-widest rounded-full\">
+            Explore Our Universe
+          </button>
+        </div>
+        <div class=\"col-span-12 md:col-span-7 md:col-start-6 order-1 md:order-2 relative -mt-10 md:mt-0\">
+          <img src=\"https://source.unsplash.com/random/1200x800/?futuristic-city,neon-lights,sweets,costumes,cyberpunk\"
+               alt=\"A vibrant, neon-lit illustration of a futuristic cityscape with cosmic sweets and elaborate costumes displayed in glowing showcases, embodying a club-like atmosphere.\"
+               class=\"w-full h-auto object-cover rounded-xl aspect-video img-shadow-primary transform -rotate-3 hover:rotate-0\">
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Our Cosmic Creations Section - Sweets -->
+  <div class=\"bg-gradient-to-br from-background via-dark-background to-background py-20 lg:py-32 relative z-20 section-bleed-top section-bleed-bottom -mt-20\">
+    <div class=\"container\">
+      <section class=\"grid grid-cols-12 gap-10 md:gap-16 items-center mb-20 lg:mb-32\">
+        <h2 class=\"col-span-12 text-center text-neon-secondary mb-16 uppercase font-orbitron font-black\">
+          Unleash Your Inner Space Cadet
+        </h2>
+        <article class=\"col-span-12 md:col-span-7 relative\">
+          <img src=\"https://source.unsplash.com/random/1000x700/?neon-candy,space-sweets,glowing-food,vibrant-desserts\"
+               alt=\"An mesmerizing assortment of glow-in-the-dark, rainbow-hued cosmic candies and lollipops arranged on a futuristic neon-lit shelf, radiating vibrant colors.\"
+               class=\"w-full h-auto object-cover rounded-xl aspect-video img-shadow-secondary transform rotate-2 hover:rotate-0\">
+        </article>
+        <div class=\"col-span-12 md:col-span-5 md:col-start-8 order-last md:order-first relative -mt-10 md:mt-0\">
+          <h3 class=\"text-neon-primary mb-6 uppercase font-orbitron font-black\">
+            Sweet Treats from Another World
+          </h3>
+          <p class=\"text-lg leading-relaxed mb-8\">
+            Prepare your taste buds for an interstellar journey with our cosmic candy collection. Each piece is a masterpiece, a fusion of art and flavor so visually stunning, you'll almost hesitate to eat them... almost. Dive into an array of vibrant sweets, from mind-bending glow-in-the-dark gummies that shimmer like nebulae, to rainbow-hued rock candy that captures the spectrum of a distant galaxy. Whether your palate craves the zesty punch of alien fruits or the mysterious depths of uncharted flavors, SpaceJunkies has the perfect fuel for your next intergalactic escapade. Don't just eat candy; experience the cosmos!
+          </p>
+          <button class=\"btn-primary px-8 py-4 uppercase font-black tracking-widest rounded-full\">
+            Explore Our Sweet Collection
+          </button>
+        </div>
+      </section>
+
+      <!-- Our Cosmic Creations Section - Costumes -->
+      <section class=\"grid grid-cols-12 gap-10 md:gap-16 items-center pt-20 lg:pt-32\">
+        <div class=\"col-span-12 md:col-span-5 relative -mt-10 md:mt-0\">
+          <h3 class=\"text-neon-secondary mb-6 uppercase font-orbitron font-black\">
+            Costumes that are Out of this World
+          </h3>
+          <p class=\"text-lg leading-relaxed mb-8\">
+            Transform into a cosmic superstar and command attention with our unparalleled range of galaxy-inspired costumes! Whether you're gearing up for an epic music festival, a high-stakes costume party, or simply aiming to infuse your everyday look with an extra dose of futuristic flair, SpaceJunkies offers the ultimate getup. Our collection features everything from shimmering spacesuits that reflect starlight to glow-in-the-dark accessories designed to make you shine brighter than any star in the night sky. Why settle for terrestrial attire when you can embody the extraordinary? Step into our cosmic wardrobe and prepare to turn heads across the galaxy!
+          </p>
+          <button class=\"btn-primary px-8 py-4 uppercase font-black tracking-widest rounded-full\">
+            Browse Our Cosmic Costume Collection
+          </button>
+        </div>
+        <article class=\"col-span-12 md:col-span-7 md:col-start-7 relative\">
+          <img src=\"https://source.unsplash.com/random/1000x700/?futuristic-costume,neon-fashion,space-suit,club-outfit,cosplay\"
+               alt=\"A futuristic model wearing an elaborate, shimmering spacesuit adorned with neon lights and glow-in-the-dark accents, posing in a dark, club-like setting.\"
+               class=\"w-full h-auto object-cover rounded-xl aspect-video img-shadow-primary transform -rotate-2 hover:rotate-0\">
+        </article>
+      </section>
+    </div>
+  </div>
+
+  <!-- Galactic Gallery Section -->
+  <div class=\"container py-20 lg:py-32 relative z-30 section-bleed-top -mt-20\">
+    <section>
+      <h2 class=\"text-center text-neon-accent mb-16 uppercase font-orbitron font-black\">
+        Galactic Gallery: Moments from the Cosmos
+      </h2>
+      <p class=\"text-center text-lg leading-relaxed mb-16 max-w-3xl mx-auto\">
+        Journey through our curated visual odyssey, capturing the electric energy of SpaceJunkies in action. This gallery showcases our cosmic creations brought to life – from ecstatic fans dazzling in our futuristic costumes at vibrant festivals to the vibrant displays of our otherworldly sweets at exclusive events. Each image is a testament to the unforgettable experiences we help create, inviting you to imagine your own interstellar adventures.
+      </p>
+      <ul class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8\">
+        <li>
+          <img src=\"https://source.unsplash.com/random/800x600/?space-costume,music-festival,neon-lights,happy-person,rave\"
+               alt=\"A vibrant photo of a customer joyfully wearing a SpaceJunkies futuristic costume, illuminated by neon lights at a bustling music festival, embodying pure excitement.\"
+               class=\"w-full h-auto object-cover rounded-lg aspect-square img-shadow-primary\">
+        </li>
+        <li>
+          <img src=\"https://source.unsplash.com/random/800x600/?sweets-display,store-event,glowing-candies,candy-bar\"
+               alt=\"A captivating picture of a SpaceJunkies sweets display, featuring a wide array of glowing and colorful candies, set up attractively at a lively store event.\"
+               class=\"w-full h-auto object-cover rounded-lg aspect-square img-shadow-secondary\">
+        </li>
+        <li>
+          <img src=\"https://source.unsplash.com/random/800x600/?party-sweets,happy-group,glowing-drinks,clubbing\"
+               alt=\"A dynamic snapshot of a group of friends enjoying SpaceJunkies sweets and glowing drinks at a lively, neon-lit party, capturing moments of fun and indulgence.\"
+               class=\"w-full h-auto object-cover rounded-lg aspect-square img-shadow-primary\">
+        </li>
+        <li>
+          <img src=\"https://source.unsplash.com/random/800x600/?cosplay,event,futuristic-fashion,convention\"
+               alt=\"An attendee at a sci-fi convention proudly showcasing a custom SpaceJunkies costume, attracting attention with its intricate details and vibrant colors.\"
+               class=\"w-full h-auto object-cover rounded-lg aspect-square img-shadow-secondary\">
+        </li>
+        <li>
+          <img src=\"https://source.unsplash.com/random/800x600/?neon-desserts,club-food,creative-cocktails,nightlife\"
+               alt=\"A close-up shot of artistically arranged neon-infused desserts and cosmic cocktails from SpaceJunkies, perfect for a high-energy club night.\"
+               class=\"w-full h-auto object-cover rounded-lg aspect-square img-shadow-primary\">
+        </li>
+        <li>
+          <img src=\"https://source.unsplash.com/random/800x600/?space-themed-party,decorations,happy-kids,birthday\"
+               alt=\"A joyous scene from a space-themed party where children are delighted by SpaceJunkies decorations and the unique glow of the party favors.\"
+               class=\"w-full h-auto object-cover rounded-lg aspect-square img-shadow-secondary\">
+        </li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- Newsletter & Call to Action Aside -->
+  <div class=\"bg-gradient-to-tl from-background via-dark-background to-background py-20 lg:py-32 relative z-10\">
+    <div class=\"container\">
+      <aside class=\"text-center max-w-4xl mx-auto p-10 lg:p-16 rounded-3xl border border-primary/30 shadow-[0_0_50px_rgba(var(--primary-rgb),0.3)] bg-black/50 backdrop-blur-sm transform -rotate-1 hover:rotate-0 transition-transform duration-300\">
+        <h3 class=\"text-neon-primary mb-6 uppercase font-orbitron font-black\">
+          Stay Tuned for Cosmic Updates!
+        </h3>
+        <p class=\"text-lg leading-relaxed mb-10\">
+          Ready to be the first to know about our next galaxy-shaking product launch, exclusive cosmic discounts, and mind-blowing upcoming events? Join our elite squadron of SpaceJunkies subscribers and unlock VIP access to the universe's most thrilling updates. As a valued member, you'll receive direct transmissions from beyond, ensuring you never miss a beat in our ever-expanding cosmos. Don't just follow the stars; become one! Sign up now and prepare for immediate blast-off into a world of endless discovery and interstellar perks!
+        </p>
+        <form class=\"flex flex-col md:flex-row gap-4 max-w-xl mx-auto\">
+          <input type=\"email\" placeholder=\"Your Interstellar Email Address\" class=\"flex-grow rounded-full text-center md:text-left\">
+          <button type=\"submit\" class=\"btn-primary px-8 py-4 uppercase font-black tracking-widest rounded-full\">
+            Subscribe to Our Cosmic Newsletter
+          </button>
+        </form>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <div class=\"container py-20 lg:py-32 relative z-0\">
+    <footer>
+      <div class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-16\">
+        <div class=\"col-span-1 md:col-span-2 lg:col-span-1\">
+          <h4 class=\"text-neon-secondary mb-6 uppercase font-orbitron font-black\">
+            Get in Touch with SpaceJunkies
+          </h4>
+          <p class=\"text-lg leading-relaxed mb-8\">
+            Have a burning question about our latest nebula-flavored sweet, need styling advice for your next intergalactic gala, or simply want to share your SpaceJunkies experience? Our dedicated crew is always ready to receive your transmissions. We thrive on connecting with our community, ensuring your journey through the cosmos is as smooth and delightful as possible. Reach out – let's make your space travels a little sweeter, together!
+          </p>
+          <div class=\"text-sm\">
+            <p class=\"mb-2\"><strong>Hours:</strong> Monday - Friday, 10 AM - 6 PM (EST)</p>
+            <p><strong>Location:</strong> The Milky Way, Sector 7G (Online Store)</p>
+          </div>
+        </div>
+
+        <div class=\"col-span-1 lg:col-span-2\">
+            <h4 class=\"text-neon-primary mb-6 uppercase font-orbitron font-black\">
+                Send Us a Cosmic Message
+            </h4>
+            <form class=\"grid grid-cols-1 md:grid-cols-2 gap-6\">
+                <input type=\"text\" placeholder=\"Your Cosmic Designation (Name)\" class=\"col-span-1\">
+                <input type=\"email\" placeholder=\"Your Interstellar Email Address\" class=\"col-span-1\">
+                <textarea placeholder=\"Your Message to the Stars\" rows=\"6\" class=\"col-span-full\"></textarea>
+                <button type=\"submit\" class=\"btn-primary col-span-full px-8 py-4 uppercase font-black tracking-widest rounded-full mt-4\">
+                    Send Your Message to SpaceJunkies
+                </button>
+            </form>
+        </div>
+      </div>
+
+      <div class=\"border-t border-primary/20 pt-10 mt-20 flex flex-col md:flex-row justify-between items-center text-center md:text-left\">
+        <p class=\"text-sm mb-4 md:mb-0\">&copy; <span id=\"current-year\"></span> SpaceJunkies. All rights reserved. Propelled by cosmic energy.</p>
+        <ul class=\"flex space-x-6 text-xl\">
+          <li><a href=\"#\" class=\"hover:text-primary\"><span class=\"sr-only\">Facebook</span><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.588-1.333h2.412v-3h-3.979c-3.121 0-4.021 1.353-4.021 4.192v2.808z\"/></svg></a></li>
+          <li><a href=\"#\" class=\"hover:text-primary\"><span class=\"sr-only\">Instagram</span><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.069-4.85.069-3.204 0-3.584-.012-4.849-.069-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.069-1.644-.069-4.849 0-3.204.012-3.584.069-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.073 4.948.073 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z\"/></svg></a></li>
+          <li><a href=\"#\" class=\"hover:text-primary\"><span class=\"sr-only\">Twitter</span><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.492 0-6.34 2.848-6.34 6.34 0 .495.056.974.138 1.433-5.264-.265-9.92-2.793-13.041-6.68-.544.931-.864 2.029-.864 3.19 0 2.209 1.115 4.161 2.806 5.309-.276-.008-.53-.07-.77-.203v.079c0 3.067 2.184 5.626 5.062 6.207-.4.11-.82.168-1.25.168-.308 0-.6-.028-.88-.086.796 2.476 3.097 4.28 5.823 4.322-2.158 1.69-4.774 2.693-7.696 2.693-.5 0-.99-.03-1.47-.083 2.782 1.783 6.075 2.83 9.663 2.83 11.547 0 17.848-9.563 17.848-17.847 0-.272-.006-.543-.017-.813.965-.695 1.795-1.564 2.455-2.553z\"/></svg></a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+```"
+    }
+  ],
+  "role": "model"
+}
