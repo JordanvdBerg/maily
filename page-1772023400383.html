@@ -1,0 +1,88 @@
+Below is the full HTML with Tailwind CSS classes applied to achieve the desired design:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpaceJunkies</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary-color: #08F7FE;
+            --secondary-color: #FF69B4;
+            --accent-color: #FFFF00;
+            --background-color: #1A1D23;
+            --text-color: #FFFFFF;
+        }
+    </style>
+</head>
+<body class="bg-[#1A1D23] text-[#FFFFFF]">
+    <header class="bg-[#1A1D23]">
+        <div class="container mx-auto max-w-1200px p-10 pt-20 pb-20">
+            <nav>
+                <ul class="flex justify-between">
+                    <li class="mr-10"><a href="#" class="text-2xl">Home</a></li>
+                    <li class="mr-10"><a href="#" class="text-2xl">Sweets</a></li>
+                    <li class="mr-10"><a href="#" class="text-2xl">Costumes</a></li>
+                    <li><a href="#" class="text-2xl">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="relative">
+        <div class="container mx-auto max-w-1200px p-10 pt-20 pb-20">
+            <section class="grid grid-cols-12 gap-10">
+                <h1 class="col-span-12 text-8xl mb-12">Welcome to SpaceJunkies: Your Cosmic Playground</h1>
+                <p class="md:col-span-5 md:col-start-2 text-2xl">Step into our vibrant world where the boundaries of reality are pushed, and the love for sweets and costumes knows no limits. At SpaceJunkies, we're passionate about bringing you the most mouth-watering treats and out-of-this-world costumes that will make your heart skip a beat. Whether you're a fan of futuristic fashion or a sucker for sweet delights, we've got you covered. Our doors are open from Monday to Friday, 10 AM - 18 PM, so come and experience the magic for yourself. Get ready to indulge in a world of pure imagination, where the fun never ends, and the excitement is always palpable.</p>
+                <img src="hero-image" alt="A colorful illustration of a futuristic cityscape with neon lights, sweets, and costumes" class="md:col-span-7 md:col-start-7 aspect-video shadow-[20px_20px_0px_0px_rgba(8,247,254,0.3)]">
+            </section>
+            <section class="bg-[#FF69B4] bg-opacity-20 p-10 mt-20">
+                <div class="grid grid-cols-12 gap-10">
+                    <h2 class="col-span-12 text-7xl mb-12">Explore Our Galactic Products</h2>
+                    <article class="md:col-span-5 md:col-start-2">
+                        <h3 class="text-6xl mb-5">Sweet Treats from Another World</h3>
+                        <p class="text-2xl">Our sweets are not just any ordinary treats - they're a culinary journey through the cosmos. From galaxy-themed lollipops to asteroid-shaped chocolates, every bite is a taste sensation that will leave you craving for more. With new and exciting flavors being added all the time, you'll never get bored of our sweet delights. Whether you're in the mood for something classic and comforting or adventurous and bold, our sweets are the perfect companion for any intergalactic adventure. So why wait? Blast off into a world of pure bliss and indulge in our cosmic sweets today!</p>
+                    </article>
+                    <img src="sweets-image" alt="A variety of colorful sweets, including lollipops, chocolates, and candies" class="md:col-span-7 md:col-start-7 aspect-square shadow-[20px_20px_0px_0px_rgba(8,247,254,0.3)]">
+                </div>
+                <div class="grid grid-cols-12 gap-10 mt-10">
+                    <img src="costumes-image" alt="A model wearing a futuristic costume, with neon lights and cosmic accessories" class="md:col-span-7 md:col-start-2 aspect-video shadow-[20px_20px_0px_0px_rgba(8,247,254,0.3)]">
+                    <article class="md:col-span-5 md:col-start-9">
+                        <h3 class="text-6xl mb-5">Costumes that are Out of this World</h3>
+                        <p class="text-2xl">Unleash your inner space rebel with our range of costumes that are truly astronomical. From futuristic jumpsuits to cosmic accessories, our costumes are designed to make you stand out from the crowd and shine like a star. Whether you're attending a themed party, a music festival, or just want to add some extra flair to your everyday look, our costumes are the perfect choice. With a wide range of styles and sizes to choose from, you're sure to find the perfect costume to match your unique personality and style. So why settle for ordinary when you can be extraordinary? Get ready to make a statement with our cosmic costumes!</p>
+                    </article>
+                </div>
+            </section>
+            <section class="p-10 mt-20">
+                <h2 class="col-span-12 text-7xl mb-12">Galactic Gallery</h2>
+                <div class="grid grid-cols-12 gap-10">
+                    <img src="gallery-image1" alt="A photo of a customer wearing a SpaceJunkies costume, with a fun and colorful background" class="md:col-span-4 aspect-square shadow-[20px_20px_0px_0px_rgba(8,247,254,0.3)]">
+                    <img src="gallery-image2" alt="A picture of a variety of SpaceJunkies sweets, arranged in a creative and visually appealing way" class="md:col-span-4 aspect-square shadow-[20px_20px_0px_0px_rgba(8,247,254,0.3)]">
+                    <img src="gallery-image3" alt="A snapshot of a SpaceJunkies event, with customers having fun and enjoying the festivities" class="md:col-span-4 aspect-square shadow-[20px_20px_0px_0px_rgba(8,247,254,0.3)]">
+                </div>
+            </section>
+            <section class="bg-[#FF69B4] bg-opacity-20 p-10 mt-20">
+                <h2 class="col-span-12 text-7xl mb-12">Get in Touch with Us</h2>
+                <form class="grid grid-cols-12 gap-10">
+                    <input type="text" placeholder="Your Name: Join the SpaceJunkies crew!" class="md:col-span-6 md:col-start-2 p-5 rounded-lg">
+                    <input type="email" placeholder="Your Email: Stay tuned for cosmic updates!" class="md:col-span-6 md:col-start-7 p-5 rounded-lg">
+                    <textarea placeholder="Your Message: Share your thoughts, ask a question, or just say hello!" class="md:col-span-10 md:col-start-2 p-5 rounded-lg"></textarea>
+                    <button class="md:col-span-2 md:col-start-10 px-8 py-4 uppercase font-black tracking-widest bg-[#08F7FE] text-[#1A1D23] rounded-lg">Send Message: Blast off into the conversation!</button>
+                </form>
+            </section>
+        </div>
+    </main>
+    <footer class="bg-[#1A1D23] p-10">
+        <div class="container mx-auto max-w-1200px p-10 pt-20 pb-20">
+            <p>&copy; 2024 SpaceJunkies: Where the cosmic adventure never ends!</p>
+            <ul class="flex justify-between">
+                <li class="mr-10"><a href="#" class="text-2xl">Terms and Conditions: The space rules!</a></li>
+                <li><a href="#" class="text-2xl">Privacy Policy: We've got your back, space traveler!</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
+```
